@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { Header } from './Header';
 import './style.css'
+
 
 export const Login = () => {
     const [click, setClick] = useState(false)
@@ -11,8 +13,11 @@ export const Login = () => {
     });
 
     return (
-        <div>
-            <button onClick={() => setClick(true)} className="Login">Sign In with Omniport</button>
-        </div>
+        <>
+            <Header navBar={false} />
+            <div>
+                <button onClick={() => setClick(true)} className="Login">Sign In with Omniport</button>
+            </div>
+        </>
     )
 }

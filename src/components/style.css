@@ -9,12 +9,34 @@
     font-size: 1.5rem;
 }
 
-.nav{
-    display: flex;
+.container{
     font-family: 'Parisienne', cursive;
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 700;
     padding: 0.5rem;
+    text-align: center;
+}
 
+.nav{
+    display:  flex;
+    justify-content: space-evenly;
+    margin-top: 1.2rem;
+    padding: 1rem;
+    background-color: #EDD0FF;
+    border-radius: 0.5rem;
+}
 
+.navItem{
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 2rem;
+    padding: 0.5rem;
+    background-color: #DB9FFF;
+    border: 0;
+    border-radius: 0.5rem;
+    transition: 0.3s all;
+}
+
+.navItem:hover{
+    background-color: #C465FF;
+    box-shadow: 0rem 0.2rem 0.5rem black
 }

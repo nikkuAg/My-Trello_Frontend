@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-function App() {
+// Components
+import { Login } from './components/Login';
+import { Token } from './components/Token';
+import { Header } from './components/Header';
+
+
+export const App = () => {
+  let tokenSave = String(localStorage.getItem("token"))
+  const [token, settoken] = useState(tokenSave === "null" ? "" : tokenSave)
+  console.log(token)
+  // if (token === "") {
+  //   return (
+  //     <>
+  //       <BrowserRouter>
+  //         <Route path="/login" component={Login} />
+  //         <Redirect to="/login" />
+  //       </BrowserRouter>
+  //     </>
+  //   )
+  // }
+  // else {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/header" component={() => (<Header navBar={true} token={token} />)} />
+        <Route path="/token" component={() => (<Token settoken={settoken} token={token} />)} />
+        <Redirect to={token === "" ? "/login" : ""} />
+      </Switch>
+    </BrowserRouter>
   );
-}
+  // }
 
-export default App;
+}

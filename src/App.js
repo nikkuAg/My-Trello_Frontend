@@ -8,7 +8,7 @@ import { Header } from './components/Header';
 
 
 export const App = () => {
-  let tokenSave = String(localStorage.getItem("token"))
+  let tokenSave = String(sessionStorage.getItem("token"))
   const [token, settoken] = useState(tokenSave === "null" ? "" : tokenSave)
   console.log(token)
   // if (token === "") {
@@ -25,10 +25,10 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={() => (<Login login={token === "" ? false : true} />)} />
         <Route path="/header" component={() => (<Header navBar={true} token={token} />)} />
         <Route path="/token" component={() => (<Token settoken={settoken} token={token} />)} />
-        <Redirect to={token === "" ? "/login" : ""} />
+        <Redirect to={token === "/header" ? "/login" : ""} />
       </Switch>
     </BrowserRouter>
   );

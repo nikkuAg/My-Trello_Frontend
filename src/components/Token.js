@@ -8,7 +8,7 @@ export const Token = (props) => {
     let key = url.searchParams.get('token')
     let auth = 'Token '.concat(String(key));
     props.settoken(auth);
-    setTimeout(localStorage.setItem('token', auth), 1000)
+    setTimeout(sessionStorage.setItem('token', auth), 1000)
     return (
         <Redirect to="" />
     );

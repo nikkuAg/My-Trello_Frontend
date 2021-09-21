@@ -14,7 +14,7 @@ export const Login = (props) => {
     return (
         <>
             <Redirect to={props.login ? "/header" : "/login"} />
-            <Header navBar={false} />
+            <Header navBar={false} login={props.login} />
             <div style={{ textAlign: "center", marginTop: "12rem" }}>
                 <button onClick={() => setClick(true)} className="Login">Sign In with Omniport</button>
             </div>

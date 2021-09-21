@@ -1,8 +1,13 @@
 import React from 'react';
 import './style.css'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 export const Header = (props) => {
+    const history = useHistory();
+    const redirect = () => {
+        history.push("/logout");
+    }
+
     return (
         <>
             <div className="container">
@@ -23,7 +28,7 @@ export const Header = (props) => {
                                     <button className="navItem">
                                         Admin Page
                                     </button>
-                                    <button className="navItem">
+                                    <button className="navItem" onClick={redirect} >
                                         Logout
                                     </button>
                                 </div>
@@ -35,6 +40,7 @@ export const Header = (props) => {
         </>
     )
 }
+
 
 Header.defaultProps = {
     'navBar': false,

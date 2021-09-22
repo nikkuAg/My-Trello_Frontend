@@ -25,9 +25,10 @@ export const Header = (props) => {
                                 <button className="navItem">
                                     Project
                                 </button>
-                                <button className="navItem">
-                                    Admin Page
-                                </button>
+                                {props.admin ?
+                                    <button className="navItem">
+                                        Admin Page
+                                    </button> : <></>}
                                 <button className="navItem" onClick={() => redirect("/logout")} >
                                     Logout
                                 </button>

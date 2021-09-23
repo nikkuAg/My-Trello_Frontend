@@ -8,6 +8,7 @@ export const Token = (props) => {
     let key = url.searchParams.get('token');
     let admin = String(url.searchParams.get('admin'));
     let disable = String(url.searchParams.get('disable'));
+    let id = String(url.searchParams.get('id'));
     let auth = 'Token '.concat(String(key));
     props.settoken(auth);
     disable = (disable === "True" ? true : false);
@@ -15,9 +16,11 @@ export const Token = (props) => {
     sessionStorage.setItem('token', auth);
     sessionStorage.setItem('admin', admin);
     sessionStorage.setItem('disable', disable);
+    sessionStorage.setItem('id', id);
     props.setlogin(true);
     props.setadmin(admin);
     props.setdisable(disable);
+    props.setuser(id);
 
     return (
         <Redirect to="" />

@@ -18,6 +18,7 @@ export const Logout = (props) => {
         sessionStorage.removeItem("token");
         sessionStorage.removeItem("admin");
         sessionStorage.removeItem("disable");
+        sessionStorage.removeItem("id");
         props.setlogin(false);
     }
     return <Redirect to="" />

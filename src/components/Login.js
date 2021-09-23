@@ -15,7 +15,7 @@ export const Login = (props) => {
     console.log(props.message + " login")
     return (
         <>
-            <Redirect to={props.login ? "/header" : "/login"} />
+            <Redirect to={props.login ? "/dasboard" : "/login"} />
             <Header navBar={false} login={props.login} />
             <div className="loginBox">
                 <Error message={props.message !== "" ? props.message : ""} />

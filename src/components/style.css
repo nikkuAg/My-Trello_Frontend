@@ -65,3 +65,19 @@
     margin-top: 5rem;
     height: 15rem;
 }
+
+.contentBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    margin: 1rem;
+    font-family: 'Gluten', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+}
+
+.content{
+    align-self: flex-start;
+    margin: 2rem;
+}

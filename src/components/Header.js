@@ -9,7 +9,7 @@ export const Header = (props) => {
     }
     return (
         <>
-            {props.disable ? redirect("/logout?q=This account is disabled!!") : console.log("test")}
+            {props.disable ? redirect("/logout?q=This account is disabled!!") : <></>}
             <div className="container">
                 My Trello
             </div>

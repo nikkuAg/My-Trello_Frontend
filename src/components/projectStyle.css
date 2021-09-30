@@ -1,12 +1,12 @@
 .project{
     display: inline-block;
-    border: 0.2rem solid black;
+    border: 0.2rem solid rgb(139, 139, 139);
     padding: 0.25rem 1rem;
     background-color: white;
-    width: 18em;
     border-radius: 1rem;
+    max-width: 20rem;
     transition: all 0.5s;
-    margin: 1rem 2rem;
+    margin: 1rem 0rem;
     overflow: auto;
     height: auto;
 }
@@ -29,6 +29,7 @@
 
 .desc{
     font-weight: 600;
+    font-size: 1.5rem;
 }
 
 .details{
@@ -36,14 +37,14 @@
     margin-top: 0.5rem;
 }
 
-.items{
-    align-self: center;
-    margin-bottom: 2rem;
-}
-
 .cards{
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 500){
+    .project{
+        margin: 1rem 0rem;
+    }
 }

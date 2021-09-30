@@ -6,7 +6,6 @@ import axios from 'axios';
 import { Login } from './components/Login';
 import { Token } from './components/Token';
 import { Header } from './components/Header';
-// import MyComponent from './components/test';
 import { Logout } from './components/Logout';
 import { Dashboard } from './components/Dashboard';
 import { Test } from './components/test';
@@ -40,8 +39,6 @@ export const App = () => {
     }
 
   }, [])
-  // console.log(userList)
-  // console.log(admin, disable, logIn, user, disableSave)
   return (
     <BrowserRouter>
       <Switch>

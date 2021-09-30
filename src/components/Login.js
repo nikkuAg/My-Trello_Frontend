@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import { MenuHeader } from 'semantic-ui-react';
 import { Error } from './Error';
-import { Header } from './Header';
 import './style.css';
 
 
@@ -16,7 +16,9 @@ export const Login = (props) => {
     return (
         <>
             <Redirect to={props.login ? "/dasboard" : "/login"} />
-            <Header navBar={false} login={props.login} />
+            <div className="heading">
+                <h1 className="title" style={{ fontFamily: "'Pacifico', cursive" }}>My Trello</h1>
+            </div>
             <div className="loginBox">
                 <Error message={props.message !== "" ? props.message : ""} />
                 <div className="loginButton">

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Header } from './Header';
 import { Projects } from './Projects';
 import { Cards } from './Cards';
 import './projectStyle.css'
+import { MenuHeader } from './Menu';
 
 
 export const Dashboard = (props) => {
@@ -32,18 +32,18 @@ export const Dashboard = (props) => {
     return (
         <>
             <div>
-                <Header navBar={props.navBar} login={props.login} disable={props.disable} admin={props.admin} />
+                <MenuHeader login={props.login} disable={props.disable} admin={props.admin} />
                 <div className="contentBox">
                     {loading ? <h1>Welcome</h1> :
-                        <h1>Welcome {user}</h1>
+                        <h1 className="dasboardHeadings">Welcome {user}</h1>
                     }
-                    <div className="content">
-                        <h2>Projects</h2>
-                        <div className="cards">
+                    <div className="contentProject">
+                        <h2 className="dasboardHeadings">Projects</h2>
+                        <div className="cardsProject">
                             <Projects token={props.token} id={props.id} users={props.users} />
                         </div>
-                        <h2>Cards</h2>
-                        <div className="cards">
+                        <h2 className="dasboardHeadings">Cards</h2>
+                        <div className="cardsProject">
                             <Cards token={props.token} id={props.id} users={props.users} />
                         </div>
                     </div>

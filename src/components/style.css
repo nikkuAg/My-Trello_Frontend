@@ -72,7 +72,7 @@
     align-items: center;
     padding: 2rem;
     margin: 1rem;
-    font-family: 'Gluten', cursive;
+    font-family: 'Gluten', cursive !important;
     font-size: 1.5rem;
     letter-spacing: 0.3rem;
 }
@@ -80,4 +80,9 @@
 .content{
     align-self: flex-start;
     margin: 2rem;
+}
+
+.heading{
+    text-align: center;
+    margin-top: 4rem;
 }

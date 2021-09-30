@@ -45,7 +45,7 @@ export const Cards = ({ id, token, users }) => {
                             <div key={element.id} className="project">
                                 <h2 className="heading"> {element.title}</h2>
                                 <p className="wiki">{element.description.replaceAll('<p>', '').replaceAll('</p>', '\n')}</p>
-                                <p><span className="desc">Due Date: </span><span className="details">{element.due_date}</span></p>
+                                <p><span className="desc date">Due Date: </span><span className="details">{element.due_date}</span></p>
                                 <div><span className="desc">Assignee: </span>{element.assignee.map(member => (
                                     <p className="details" key={member}>{users.find(o => o.id === member).name}</p>
                                 ))}</div>

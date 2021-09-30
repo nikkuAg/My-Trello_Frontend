@@ -13,7 +13,6 @@ export const Header = (props) => {
             <div className="container">
                 My Trello
             </div>
-
             {props.login ?
                 <>
                     {

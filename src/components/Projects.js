@@ -45,7 +45,7 @@ export const Projects = ({ id, token, users }) => {
                             <div key={element.id} className="project">
                                 <h2 className="heading"> {element.name}</h2>
                                 <p className="wiki">{element.wiki.replaceAll('<p>', '').replaceAll('</p>', '\n')}</p>
-                                <p><span className="desc date">Date Created: </span><span className="details">{element.date_started}</span></p>
+                                <p><span className="desc">Date Created: </span><span className="details">{element.date_started}</span></p>
                                 <div><span className="desc">Team Members: </span>{element.team_members.map(member => (
                                     <p className="details" key={member}>{users.find(o => o.id === member).name}</p>
                                 ))}</div>

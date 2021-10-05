@@ -2,12 +2,11 @@ i.icon:not(.extra){
     display: none !important;
 }
 .ui.menu.navBar{
-    font-size: 1.5rem;
+    font-size: 1rem !important;
     margin: 0;
     color: black !important;
     background-color: #EDD0FF;
     width: 100% !important;
-    font-size: 2rem !important;
     padding: 0.5rem !important;
 }
 .ui.menu .active.item, .ui.vertical.menu .active.item{
@@ -23,14 +22,11 @@ i.icon:not(.extra){
     display: flex;
     justify-content: center;
 }
-.hamburger, .ui.vertical.menu{
-    width: 100vw !important;
-}
 .ui.vertical.menu{
     display: block !important;
 }
 .menu{
-    font-size: 1.25rem !important;
+    font-size: 1rem !important;
 }
 .ui.vertical.menu .item{
     background-color: #EDD0FF !important;
@@ -38,12 +34,25 @@ i.icon:not(.extra){
 i.icon:hover:not(.extra){
     cursor: pointer;
 }
-h1:first-child{
-    font-size: 4rem !important;
+h1:first-child.heading{
+    font-size: 2rem !important;
     display: inline !important;
     margin-top: 2rem !important;
 }
 
+
+@media (max-width: 770px){
+    .ui.menu.navBar:not(.vertical){
+        font-size: 1rem !important;
+    }
+    .ui.vertical.menu{
+        display: none;
+    }
+    i.icon.hamburgerIcon{
+        font-size: 1.5rem;
+    }
+
+}
 @media (max-width: 610px) {
     .heading{
         margin: 1rem !important;
@@ -60,23 +69,17 @@ h1:first-child{
     }
     i.icon.hamburgerIcon{
         display: block !important;
-        margin: 1rem !important;
+        margin: 1.5rem !important;
     }
-
 }
-@media (max-width: 770px){
-    .ui.menu.navBar:not(.vertical){
-        font-size: 1.3rem !important;
-    }
-    .ui.vertical.menu{
-        display: none;
-    }
-
-}
-
 @media (max-width: 330px) {
     h1:first-child{
-        font-size: 2.5rem !important;
-        margin-top: 0.5rem !important;
+        font-size: 1rem !important;
+    }
+    .ui.vertical.menu{
+        font-size: 0.8rem !important;
+    }
+    i.icon.hamburgerIcon{
+        font-size: 1rem;
     }
 }

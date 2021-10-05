@@ -8,7 +8,7 @@ import { Login } from './components/Login';
 import { Token } from './components/Token';
 import { Logout } from './components/Logout';
 import { Dashboard } from './components/Dashboard';
-import { Test } from './components/test';
+// import { Test } from './components/test';
 import { Projects } from './components/Projects';
 import { MenuHeader } from './components/Menu';
 
@@ -45,7 +45,7 @@ export const App = () => {
       <Switch>
         <Route path="/login" component={() => (<Login login={logIn} disable={disable} message={error} />)} />
         {/* <Route path="/header" component={() => (<Header navBar={true} login={logIn} disable={disable} admin={admin} />)} /> */}
-        <Route path="/test" component={() => (<Test />)} />
+        {/* <Route path="/test" component={() => (<Test />)} /> */}
         <Route path="/token" component={() => (<Token settoken={settoken} setuser={setuser} setlogin={setlogIn} setdisable={setdisable} setadmin={setadmin} />)} />
         <Route path="/logout" component={() => (<Logout login={logIn} setlogin={setlogIn} error={seterror} />)} />
         <Route path="/dasboard" component={() => (<Dashboard navBar={true} login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />

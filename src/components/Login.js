@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { MenuHeader } from 'semantic-ui-react';
 import { Error } from './Error';
 import './style.css';
 
@@ -12,7 +11,6 @@ export const Login = (props) => {
             window.location.href = "http://localhost:8000/trello/login/"
         }
     });
-    console.log(props.message + " login")
     return (
         <>
             <Redirect to={props.login ? "/dasboard" : "/login"} />

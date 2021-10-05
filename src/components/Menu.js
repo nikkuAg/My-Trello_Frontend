@@ -53,12 +53,9 @@ export const MenuHeader = (props) => {
         }
     }, [click])
 
-    console.log(props.disable)
-    console.log(props.admin)
     return (
         <>
             {props.disable ? redirect("/logout?q=This account is disabled!!") : <></>}
-            {console.log("hello")}
 
             {props.login ?
                 <>

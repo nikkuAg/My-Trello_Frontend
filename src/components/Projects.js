@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
-import parse from 'html-react-parser'
+import { useHistory } from 'react-router'
 import './projectStyle.css'
 
 
@@ -11,6 +11,7 @@ export const Projects = ({ id, token, users }) => {
     const [loading, setloading] = useState(true)
     const [error, seterror] = useState([])
     const projectList = []
+    const history = useHistory()
     let myid = parseInt(id)
     useEffect(() => {
         axios.get(apiUrl, {
@@ -36,6 +37,11 @@ export const Projects = ({ id, token, users }) => {
 
         return null
     })
+
+    const projectDetail = (id) => {
+        history.push(`/my_project/${id}`)
+    }
+
     return (
         <>
             {loading ? <Loader type="ThreeDots" color="black" height={80} width={80} /> :
@@ -43,9 +49,8 @@ export const Projects = ({ id, token, users }) => {
                     {projectList.length > 0 && users.length > 0 ?
 
                         projectList.map(element => (
-                            <div key={element.id} className="project">
+                            <div key={element.id} className="project" value={element.id} onClick={() => projectDetail(element.id)}>
                                 <h2 className="heading"> {element.name}</h2>
-                                <p className="wiki">{parse(element.wiki)}</p>
                                 <p><span className="desc">Date Created: </span><span className="details">{element.date_started}</span></p>
                                 <div><span className="desc">Team Members: </span>{element.team_members.map(member => (
                                     <p className="details" key={member}>{users.find(o => o.id === member).name}</p>
@@ -55,7 +60,6 @@ export const Projects = ({ id, token, users }) => {
                                 ))}</div>
                             </div>
                         ))
-
                         : <p>{error.length > 0 ? error[0].details.detail : ''}</p>
                     }
                 </>

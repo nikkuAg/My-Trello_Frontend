@@ -57,9 +57,38 @@
     justify-content: space-evenly;
     box-sizing: initial !important  ;
 }
+#title{
+    text-align: center !important;
+    margin: 2rem;
+}
+#content{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem
+}
+#contentTitle{
+    margin: 1rem;
+}
+#lists{
+    display: flex;
+
+}
+p:not(#messageList){
+    margin-left: 2rem;
+}
+ul{
+    margin: 0rem;
+}
+#messageList{
+    color: red;
+}
+
 
 @media (max-width: 500){
     .project{
         margin: 1rem 0rem;
+    }
+    #title{
+        margin: 0px;
     }
 }

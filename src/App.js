@@ -10,6 +10,7 @@ import { Logout } from './components/Logout';
 import { Dashboard } from './components/Dashboard';
 import { Projects } from './components/Projects';
 import { CreateP } from './components/CreateP';
+import { Project } from './components/Project';
 
 
 
@@ -47,6 +48,7 @@ export const App = () => {
         <Route path="/logout" component={() => (<Logout login={logIn} setlogin={setlogIn} error={seterror} />)} />
         <Route path="/dasboard" component={() => (<Dashboard navBar={true} login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/project" component={() => (<Projects id={user} token={token} users={userList} />)} />
+        <Route path="/my_project/:id" component={() => (<Project login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/create_project" component={() => (<CreateP login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Redirect to={logIn ? "/dasboard" : "/login"} />
       </Switch>

@@ -1,4 +1,4 @@
-i.icon:not(.extra){
+/* i.icon:not(.extra){
     display: none !important;
 }
 .ui.menu.navBar{
@@ -84,5 +84,102 @@ h1:first-child.heading{
     }
     i.icon.hamburgerIcon{
         font-size: 1rem;
+    }
+}
+
+ */
+
+ i.icon:not(.extra){
+    display: none !important;
+}
+.ui.menu.navBar{
+    font-size: 1rem;
+    margin: 0;
+    background-color: #EDD0FF;
+    width: 100% !important;
+}
+.ui.menu .active.item, .ui.vertical.menu .active.item{
+    font-weight: 700 !important;
+    background-color:  #C465FF !important;
+}
+.ui.menu :not(.active).item:hover{
+    background-color:  #DB9FFF !important;
+}
+.navigation{
+    display: flex;
+    justify-content: center;
+}
+.hamburger, .ui.vertical.menu{
+    width: 100% !important;
+}
+.ui.vertical.menu{
+    display: block !important;
+}
+.menu{
+    font-size: 1rem !important;
+}
+.ui.vertical.menu .item{
+    background-color: #EDD0FF !important;
+}
+i.icon:hover:not(.extra){
+    cursor: pointer;
+}
+h1:first-child:not(.extra){
+    font-size: 2rem !important;
+    display: inline !important;
+    margin: 0px !important;
+}
+
+.heading{
+    font-size: 1rem !important;
+    margin: 1rem !important;
+}
+
+@media (max-width: 610px) {
+    .heading{
+        margin: 1rem !important;
+    }
+    .navigation{
+        justify-content: space-between;
+        align-items: center;
+    }
+    .ui.menu.navBar{
+        display: none;
+    }
+    .ui.vertical.menu{
+        font-size: 1.5rem !important;
+    }
+    i.icon.hamburgerIcon{
+        display: block !important;
+        margin: 1rem !important;
+    }
+    .useLaptop{
+        display: block;
+    }
+
+}
+@media (max-width: 1100px){
+    .ui.menu.navBar:not(.vertical){
+        font-size: 0.9rem;
+    }
+    .ui.vertical.menu{
+        display: none;
+    }
+
+}
+@media (max-width: 750px){
+    .ui.menu.navBar:not(.vertical){
+        font-size: 0.7rem;
+    }
+    .ui.vertical.menu{
+        display: none;
+    }
+
+}
+
+@media (max-width: 330px) {
+    h1:first-child{
+        font-size: 2.5rem !important;
+        margin-top: 0.5rem !important;
     }
 }

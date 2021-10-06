@@ -61,14 +61,69 @@ export const MenuHeader = (props) => {
                             >
                                 Dasboard
                             </Menu.Item>
-                            <Menu.Item
-                                name='project'
-                                active={state.activeItem === 'project'}
-                                path='create_project'
-                                onClick={handleItemClick}
-                            >
-                                Create Project
-                            </Menu.Item>
+                            {!props.project && !props.list ?
+                                <Menu.Item
+                                    name='project'
+                                    active={state.activeItem === 'project'}
+                                    path='create_project'
+                                    onClick={handleItemClick}
+                                >
+                                    Create Project
+                                </Menu.Item>
+                                : !props.list ?
+                                    <>
+                                        <Menu.Item
+                                            name='update'
+                                            active={state.activeItem === 'update'}
+                                            path='update_project'
+                                            onClick={handleItemClick}
+                                        >
+                                            Update Project
+                                        </Menu.Item>
+                                        <Menu.Item
+                                            name='delete'
+                                            active={state.activeItem === 'delete'}
+                                            path='delete_project'
+                                            onClick={handleItemClick}
+                                        >
+                                            Delete Project
+                                        </Menu.Item>
+                                        <Menu.Item
+                                            name='list'
+                                            active={state.activeItem === 'list'}
+                                            path='create_list'
+                                            onClick={handleItemClick}
+                                        >
+                                            Create List
+                                        </Menu.Item>
+                                    </> :
+                                    <>
+                                        <Menu.Item
+                                            name='update'
+                                            active={state.activeItem === 'update'}
+                                            path='update_list'
+                                            onClick={handleItemClick}
+                                        >
+                                            Update List
+                                        </Menu.Item>
+                                        <Menu.Item
+                                            name='delete'
+                                            active={state.activeItem === 'delete'}
+                                            path='delete_list'
+                                            onClick={handleItemClick}
+                                        >
+                                            Delete List
+                                        </Menu.Item>
+                                        <Menu.Item
+                                            name='card'
+                                            active={state.activeItem === 'card'}
+                                            path='create_card'
+                                            onClick={handleItemClick}
+                                        >
+                                            Create Card
+                                        </Menu.Item>
+                                    </>
+                            }
                             {props.admin ?
                                 <Menu.Item
                                     name='admin'
@@ -89,7 +144,6 @@ export const MenuHeader = (props) => {
                         </Menu>
                     </div>
                     <div className="hamburger">
-
                         <Menu vertical borderless className="navBar">
                             <Menu.Item
                                 name='home'
@@ -98,13 +152,69 @@ export const MenuHeader = (props) => {
                                 path="dashboard">
                                 Dasboard
                             </Menu.Item>
-                            <Menu.Item
-                                name='project'
-                                active={state.activeItem === 'project'}
-                                onClick={handleItemClick}
-                                path="create_project">
-                                Create Project
-                            </Menu.Item>
+                            {!props.project && !props.list ?
+                                <Menu.Item
+                                    name='project'
+                                    active={state.activeItem === 'project'}
+                                    path='create_project'
+                                    onClick={handleItemClick}
+                                >
+                                    Create Project
+                                </Menu.Item>
+                                : !props.list ?
+                                    <>
+                                        <Menu.Item
+                                            name='update'
+                                            active={state.activeItem === 'update'}
+                                            path='update_project'
+                                            onClick={handleItemClick}
+                                        >
+                                            Update Project
+                                        </Menu.Item>
+                                        <Menu.Item
+                                            name='delete'
+                                            active={state.activeItem === 'delete'}
+                                            path='delete_project'
+                                            onClick={handleItemClick}
+                                        >
+                                            Delete Project
+                                        </Menu.Item>
+                                        <Menu.Item
+                                            name='list'
+                                            active={state.activeItem === 'list'}
+                                            path='create_list'
+                                            onClick={handleItemClick}
+                                        >
+                                            Create List
+                                        </Menu.Item>
+                                    </> :
+                                    <>
+                                        <Menu.Item
+                                            name='update'
+                                            active={state.activeItem === 'update'}
+                                            path='update_list'
+                                            onClick={handleItemClick}
+                                        >
+                                            Update List
+                                        </Menu.Item>
+                                        <Menu.Item
+                                            name='delete'
+                                            active={state.activeItem === 'delete'}
+                                            path='delete_list'
+                                            onClick={handleItemClick}
+                                        >
+                                            Delete List
+                                        </Menu.Item>
+                                        <Menu.Item
+                                            name='card'
+                                            active={state.activeItem === 'card'}
+                                            path='create_card'
+                                            onClick={handleItemClick}
+                                        >
+                                            Create Card
+                                        </Menu.Item>
+                                    </>
+                            }
                             {props.admin ?
                                 <Menu.Item
                                     name='admin'
@@ -138,10 +248,15 @@ export const MenuHeader = (props) => {
 MenuHeader.defaultProps = {
     'active': 'home',
     'disable': false,
+    'login': false,
     'admin': false,
+    'project': false,
+    'list': false,
 }
 MenuHeader.prototype = {
     'active': PropTypes.string,
     'disable': PropTypes.bool,
     'admin': PropTypes.bool,
+    'project': PropTypes.bool,
+    'list': PropTypes.bool,
 }

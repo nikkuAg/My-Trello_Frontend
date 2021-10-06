@@ -3,9 +3,9 @@ import axios from 'axios';
 import { Projects } from './Projects';
 import { Cards } from './Cards';
 import { MenuHeader } from './Menu';
-import './projectStyle.css'
 import { Footer } from './Footer';
 import { Divider } from 'semantic-ui-react';
+import './projectStyle.css'
 
 
 export const Dashboard = (props) => {
@@ -33,7 +33,7 @@ export const Dashboard = (props) => {
         <div>
             <MenuHeader login={props.login} disable={props.disable} admin={props.admin} />
             <div className="dashboardBox">
-                <h1 className="dasboardHeadings">Welcome {user}</h1>
+                <h1 className="dasboardHeadings">Your Dashboard</h1>
                 <div className="contentProject">
                     <h2 className="dasboardHeadings">Your Projects</h2>
                     <div className="cardsProject">

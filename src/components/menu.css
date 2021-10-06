@@ -3,11 +3,14 @@ i.icon:not(.extra){
 }
 .ui.menu.navBar{
     font-size: 1rem !important;
-    margin: 0;
+    margin-bottom: 2rem;
     color: black !important;
     background-color: #EDD0FF;
     width: 100% !important;
     padding: 0.5rem !important;
+    position: fixed;
+    top: 0px;
+    z-index: 2;
 }
 .ui.menu .active.item, .ui.vertical.menu .active.item{
     font-weight: 700 !important;

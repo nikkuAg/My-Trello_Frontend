@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
+import parse from 'html-react-parser'
 import './projectStyle.css'
 
 
@@ -44,7 +45,7 @@ export const Projects = ({ id, token, users }) => {
                         projectList.map(element => (
                             <div key={element.id} className="project">
                                 <h2 className="heading"> {element.name}</h2>
-                                <p className="wiki">{element.wiki.replaceAll('<p>', '').replaceAll('</p>', '\n')}</p>
+                                <p className="wiki">{parse(element.wiki)}</p>
                                 <p><span className="desc">Date Created: </span><span className="details">{element.date_started}</span></p>
                                 <div><span className="desc">Team Members: </span>{element.team_members.map(member => (
                                     <p className="details" key={member}>{users.find(o => o.id === member).name}</p>

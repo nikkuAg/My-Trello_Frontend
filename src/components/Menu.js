@@ -24,15 +24,7 @@ export const MenuHeader = (props) => {
     }
     const handleItemClick = (e, { name, path }) => {
         setstate({ activeItem: name });
-        if (path === 'home') {
-            history.push('/home');
-        }
-        else if (path === 'colleges' || path === "seats") {
-            history.push(`/${path}/${name}`);
-        }
-        else {
-            history.push(`/${path}`);
-        }
+        history.push(`/${path}`)
     }
     function displayMenuMobile() {
         click ? setclick(false) : setclick(true);
@@ -64,7 +56,7 @@ export const MenuHeader = (props) => {
                             <Menu.Item
                                 name='home'
                                 active={state.activeItem === 'home'}
-                                path='home'
+                                path='dashboard'
                                 onClick={handleItemClick}
                             >
                                 Dasboard
@@ -72,10 +64,10 @@ export const MenuHeader = (props) => {
                             <Menu.Item
                                 name='project'
                                 active={state.activeItem === 'project'}
-                                path='home'
+                                path='create_project'
                                 onClick={handleItemClick}
                             >
-                                Project
+                                Create Project
                             </Menu.Item>
                             {props.admin ?
                                 <Menu.Item
@@ -97,18 +89,21 @@ export const MenuHeader = (props) => {
                         </Menu>
                     </div>
                     <div className="hamburger">
+
                         <Menu vertical borderless className="navBar">
                             <Menu.Item
                                 name='home'
                                 active={state.activeItem === 'home'}
-                                onClick={handleItemClick}>
+                                onClick={handleItemClick}
+                                path="dashboard">
                                 Dasboard
                             </Menu.Item>
                             <Menu.Item
                                 name='project'
                                 active={state.activeItem === 'project'}
-                                onClick={handleItemClick}>
-                                Project
+                                onClick={handleItemClick}
+                                path="create_project">
+                                Create Project
                             </Menu.Item>
                             {props.admin ?
                                 <Menu.Item
@@ -127,6 +122,7 @@ export const MenuHeader = (props) => {
                             </Menu.Item>
                         </Menu>
                     </div>
+                    <br></br><br></br>
                     <div className="navigation">
                         <h1 className="heading menu" style={{ fontFamily: "'Pacifico', cursive" }}>My Trello</h1>
                         <Icon name="align justify" size="big" onClick={displayMenuMobile} className="hamburgerIcon" />

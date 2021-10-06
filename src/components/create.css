@@ -1,0 +1,24 @@
+#form{
+    margin: 1rem;
+    padding: 1rem;
+}
+.ck-editor__editable_inline {
+    height: 300px !important;
+}
+.ui.button{
+    margin: 1rem !important;
+    background-color: #EDD0FF !important;
+    margin-bottom: 2rem !important;
+}
+.ui.button:hover{
+    background-color: #C465FF !important;
+}
+label{
+    margin: 0.2rem !important;
+    font-size: .92857143em;
+    font-weight: 700;
+    color: rgba(0,0,0,.87);
+}
+#error{
+    text-align: center;
+}

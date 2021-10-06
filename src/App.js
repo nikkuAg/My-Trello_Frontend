@@ -9,8 +9,9 @@ import { Token } from './components/Token';
 import { Logout } from './components/Logout';
 import { Dashboard } from './components/Dashboard';
 import { Projects } from './components/Projects';
-import { CreateP } from './components/CreateP';
+import { CreateProject } from './components/CreateProject';
 import { Project } from './components/Project';
+import { UpdateProject } from './components/UpdateProject';
 
 
 
@@ -49,7 +50,8 @@ export const App = () => {
         <Route path="/dasboard" component={() => (<Dashboard navBar={true} login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/project" component={() => (<Projects id={user} token={token} users={userList} />)} />
         <Route path="/my_project/:id" component={() => (<Project login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
-        <Route path="/create_project" component={() => (<CreateP login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
+        <Route path="/update_project/:id" component={() => (<UpdateProject login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
+        <Route path="/create_project" component={() => (<CreateProject login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Redirect to={logIn ? "/dasboard" : "/login"} />
       </Switch>
     </BrowserRouter>

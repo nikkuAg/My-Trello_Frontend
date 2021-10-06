@@ -56,7 +56,7 @@ export const Project = (props) => {
         if (!loading) {
             setself(projects.find(o => (o.id === parseInt(id))))
         }
-    }, [loading, loading2])
+    }, [loading])
 
     useEffect(() => {
         if (!loading2) {
@@ -71,7 +71,7 @@ export const Project = (props) => {
     }, [loading2])
     return (
         <div>
-            <MenuHeader active={''} project={true} login={props.login} disable={props.disable} admin={props.admin} />
+            <MenuHeader id={id} active={'project'} project={true} login={props.login} disable={props.disable} admin={props.admin} />
             {loading || loading2 ? <Loader type="ThreeDots" color="black" height={80} width={80} /> :
                 <>
                     {error.length > 0 ?
@@ -100,7 +100,6 @@ export const Project = (props) => {
                         </div>
                     }
                 </>}
-
             <Footer />
         </div >
     )

@@ -24,7 +24,12 @@ export const MenuHeader = (props) => {
     }
     const handleItemClick = (e, { name, path }) => {
         setstate({ activeItem: name });
-        history.push(`/${path}`)
+        if ((props.project || props.list) && (path !== "dashboard" && path !== "create_project" && path !== "admin" && path !== "logout")) {
+            history.push(`/${path}/${props.id}`)
+        }
+        else {
+            history.push(`/${path}`)
+        }
     }
     function displayMenuMobile() {
         click ? setclick(false) : setclick(true);
@@ -63,8 +68,8 @@ export const MenuHeader = (props) => {
                             </Menu.Item>
                             {!props.project && !props.list ?
                                 <Menu.Item
-                                    name='project'
-                                    active={state.activeItem === 'project'}
+                                    name='projects'
+                                    active={state.activeItem === 'projects'}
                                     path='create_project'
                                     onClick={handleItemClick}
                                 >
@@ -72,6 +77,14 @@ export const MenuHeader = (props) => {
                                 </Menu.Item>
                                 : !props.list ?
                                     <>
+                                        <Menu.Item
+                                            name='project'
+                                            active={state.activeItem === 'project'}
+                                            path='my_project'
+                                            onClick={handleItemClick}
+                                        >
+                                            Project
+                                        </Menu.Item>
                                         <Menu.Item
                                             name='update'
                                             active={state.activeItem === 'update'}
@@ -98,6 +111,14 @@ export const MenuHeader = (props) => {
                                         </Menu.Item>
                                     </> :
                                     <>
+                                        <Menu.Item
+                                            name='list'
+                                            active={state.activeItem === 'list'}
+                                            path='my_list'
+                                            onClick={handleItemClick}
+                                        >
+                                            List
+                                        </Menu.Item>
                                         <Menu.Item
                                             name='update'
                                             active={state.activeItem === 'update'}
@@ -128,7 +149,7 @@ export const MenuHeader = (props) => {
                                 <Menu.Item
                                     name='admin'
                                     active={state.activeItem === 'admin'}
-                                    path='home'
+                                    path='admin'
                                     onClick={handleItemClick}
                                 >
                                     Admin Page
@@ -164,6 +185,14 @@ export const MenuHeader = (props) => {
                                 : !props.list ?
                                     <>
                                         <Menu.Item
+                                            name='project'
+                                            active={state.activeItem === 'project'}
+                                            path='my_project'
+                                            onClick={handleItemClick}
+                                        >
+                                            Project
+                                        </Menu.Item>
+                                        <Menu.Item
                                             name='update'
                                             active={state.activeItem === 'update'}
                                             path='update_project'
@@ -189,6 +218,14 @@ export const MenuHeader = (props) => {
                                         </Menu.Item>
                                     </> :
                                     <>
+                                        <Menu.Item
+                                            name='list'
+                                            active={state.activeItem === 'list'}
+                                            path='my_list'
+                                            onClick={handleItemClick}
+                                        >
+                                            List
+                                        </Menu.Item>
                                         <Menu.Item
                                             name='update'
                                             active={state.activeItem === 'update'}
@@ -219,7 +256,8 @@ export const MenuHeader = (props) => {
                                 <Menu.Item
                                     name='admin'
                                     active={state.activeItem === 'admin'}
-                                    onClick={handleItemClick}>
+                                    onClick={handleItemClick}
+                                    path="admin">
                                     Admin Page
                                 </Menu.Item> : <></>}
                             <Menu.Item

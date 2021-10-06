@@ -11,7 +11,7 @@ import './create.css'
 
 
 
-export const CreateP = (props) => {
+export const CreateProject = (props) => {
     const history = useHistory()
     const [text, settext] = useState('')
     const [team, setteam] = useState([])
@@ -59,7 +59,7 @@ export const CreateP = (props) => {
     }
     return (
         <div>
-            <MenuHeader active="project" login={props.login} disable={props.disable} admin={props.admin} />
+            <MenuHeader active="projects" login={props.login} disable={props.disable} admin={props.admin} />
             <div id="form">
                 <h1>Create a New Project</h1>
                 <Form>

@@ -16,6 +16,7 @@ import { DeleteProject } from './components/DeleteProject';
 import { CreateList } from './components/CreateList';
 import { List } from './components/List';
 import { UpdateList } from './components/UpdateList';
+import { DeleteList } from './components/DeleteList';
 
 
 
@@ -59,6 +60,7 @@ export const App = () => {
         <Route path="/update_project/:id" component={() => (<UpdateProject login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/update_list/:id" component={() => (<UpdateList login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/delete_project/:id" component={() => (<DeleteProject login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />
+        <Route path="/delete_list/:id" component={() => (<DeleteList login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />
         <Route path="/create_list/:id" component={() => (<CreateList login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />
         <Route path="/create_project" component={() => (<CreateProject login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Redirect to={logIn ? "/dasboard" : "/login"} />

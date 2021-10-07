@@ -112,7 +112,7 @@ export const List = (props) => {
                                         <div id="lists">
                                             {selfcard.length > 0 ?
                                                 selfcard.map(data => (
-                                                    <div key={data.id} className="project">
+                                                    <div key={data.id} className="project" id={(new Date(String(data.due_date))).getDate() > (new Date()).getDate() ? "comming" : (new Date(String(data.due_date))).getDate() === (new Date()).getDate() ? "today" : "past"}>
                                                         <h2 className="heading"> {data.title}</h2>
                                                         <p className="extra"><span className="desc date">Due Date: </span><span className="details">{data.due_date}</span></p>
                                                         <div><span className="desc">Assignee: </span>{data.assignee.map(member => (

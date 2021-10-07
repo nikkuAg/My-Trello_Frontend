@@ -12,12 +12,17 @@ import './create.css'
 
 export const UpdateProject = (props) => {
     const history = useHistory()
+    const [oldProjectName, setoldProjectName] = useState('')
+    const [oldtext, setoldtext] = useState('')
+    const [oldteam, setoldteam] = useState([])
+    const [oldcreator, setoldcreator] = useState([])
     const [text, settext] = useState('')
     const [team, setteam] = useState([])
+    const [creator, setcreator] = useState([])
     const [error, seterror] = useState('')
     const [projects, setprojects] = useState([])
     const [loading, setloading] = useState(true)
-    const [thisProject, setthisProject] = useState({})
+    const [thisProject, setthisProject] = useState([])
     const { id } = useParams()
 
     var option = []
@@ -25,7 +30,7 @@ export const UpdateProject = (props) => {
         option.push({ key: props.users[x].id, text: props.users[x].name, value: props.users[x].id })
     }
     const apiUrl = 'http://127.0.0.1:8000/trello/project/';
-    const apiUrl2 = `http://localhost:8000/trello/project/${id}`
+    const apiUrl2 = `http://localhost:8000/trello/project/${id}/`
 
     useEffect(() => {
         axios.get(apiUrl, {
@@ -46,76 +51,111 @@ export const UpdateProject = (props) => {
     }, [apiUrl])
 
     useEffect(() => {
-        if (loading) {
-            setthisProject(projects.find(o => o.id === parseInt(id)))
+        if (!loading) {
+            var data = []
+            console.log(projects)
+            var test = projects.find(o => (o.id === parseInt(id)))
+            setoldProjectName(test.name)
+            setoldteam(test.team_members)
+            setoldcreator(test.creator)
+            setoldtext(test.wiki)
+            for (var x = 0; x < test.creator.length; x++) {
+                if (!data.includes(test.creator[x])) {
+                    data.push(test.creator[x])
+                }
+            }
+            for (var x = 0; x < test.team_members.length; x++) {
+                if (!data.includes(test.team_members[x])) {
+                    data.push(test.team_members[x])
+                }
+            }
+            setthisProject(data)
         }
     }, [loading])
     const submit = () => {
         var name = document.getElementById("name").value
-        if (name !== '') {
-            if (text !== '') {
-                if (team.length !== 0) {
-                    const data = {
-                        "name": name,
-                        "wiki": text,
-                        "team_members": team,
-                        "creator": [parseInt(props.id)]
-                    }
-                    axios.put(apiUrl, data, {
-                        headers: {
-                            'Authorization': props.token,
-                        }
-                    })
-                        .then(res => {
-                            alert(res.statusText)
-                            history.push("/dashboard")
-                        })
-                        .catch(err => {
-                            if (err.response) {
-                                console.error(err.response)
-                                seterror("Error in creating project!!")
-                            }
-                        })
-                } else {
-                    seterror("Select atleast one Team member.")
-                }
-            } else {
-                seterror("Project wiki cannot be empty!!")
-            }
-        } else {
-            seterror("Project name cannot be empty!!")
+        var wiki = text
+        var member = team
+        var create = creator
+        if (wiki === '') {
+            wiki = oldtext
         }
+        if (member.length === 0) {
+            member = oldteam
+        }
+        if (create.length === 0) {
+            create = oldcreator
+        }
+        if (name === '') {
+            name = oldProjectName
+        }
+        console.log(text)
+        const data = {
+            "name": name,
+            "wiki": wiki,
+            "team_members": member,
+            "creator": create
+        }
+        console.log(data)
+        axios.put(apiUrl2, data, {
+            headers: {
+                'Authorization': props.token,
+            }
+        })
+            .then(res => {
+                console.log(res)
+                history.push(`/my_project/${id}/`)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
     return (
         <div>
-            <MenuHeader active="update" id={id} login={props.login} disable={props.disable} admin={props.admin} />
+            <MenuHeader active="update" project={true} id={id} login={props.login} disable={props.disable} admin={props.admin} />
             {loading ? <Loader type="ThreeDots" color="black" height={80} width={80} /> :
                 <>
                     {error.length > 0 ?
                         <Error message={error[0].details.detail} /> :
                         <>
-                            {thisProject.creator.includes(parseInt(props.id)) || thisProject.team_members.includes(parseInt(props.id)) ?
+                            {thisProject.includes(parseInt(props.id)) || thisProject.includes(parseInt(props.id)) ?
                                 < div id="form">
                                     <h1>Update Project</h1>
                                     <Form>
                                         <Form.Group widths='equal' inline>
-                                            <Form.Input id="name" fluid label='Name of Project' placeholder='Project Name' />
-                                            <Form.Select
-                                                id="team"
-                                                fluid
-                                                multiple
-                                                label='Select Team Members'
-                                                options={option}
-                                                placeholder='Team Members'
-                                                onChange={(event, { value }) => {
-                                                    setteam(value)
-                                                }}
-                                            />
+                                            <Form.Input id="name" defaultValue={projects.find(o => (o.id === parseInt(id))).name} fluid label='Name of Project' placeholder='Project Name' />
+                                            {projects.find(o => (o.id === parseInt(id))).creator.includes(parseInt(props.id)) ?
+                                                <>
+                                                    <Form.Select
+                                                        id="team"
+                                                        fluid
+                                                        multiple
+                                                        label='Update Team Members'
+                                                        options={option}
+                                                        placeholder='Team Members'
+                                                        onChange={(event, { value }) => {
+                                                            setteam(value)
+                                                        }}
+                                                    />
+                                                    <Form.Select
+                                                        id="team"
+                                                        fluid
+                                                        multiple
+                                                        label='Update Creator'
+                                                        options={option}
+                                                        placeholder='Creators'
+                                                        onChange={(event, { value }) => {
+                                                            setcreator(value)
+                                                        }}
+                                                    />
+                                                </>
+                                                : <></>}
                                         </Form.Group>
                                         <label>Project Wiki</label>
                                         <CKEditor
                                             editor={ClassicEditor}
                                             label="Wiki"
+                                            defaultValue={oldtext}
                                             data={text}
                                             onChange={(event, editor) => {
                                                 const data = editor.getData()

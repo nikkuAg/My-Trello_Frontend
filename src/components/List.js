@@ -83,7 +83,6 @@ export const List = (props) => {
         if (!loading3) {
             var data = []
             for (var x = 0; x < card.length; x++) {
-                console.log(card[x])
                 if (card[x].list === parseInt(id)) {
                     data.push(card[x])
                 }
@@ -91,7 +90,6 @@ export const List = (props) => {
             setselfcard(data)
         }
     }, [loading3])
-    console.log(self, selfcard, loading, loading3, loading2)
 
     return (
         <div>

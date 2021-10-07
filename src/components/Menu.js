@@ -107,7 +107,7 @@ export const MenuHeader = (props) => {
                                             path='create_list'
                                             onClick={handleItemClick}
                                         >
-                                            Create List
+                                            Add List
                                         </Menu.Item>
                                     </> :
                                     <>
@@ -141,7 +141,7 @@ export const MenuHeader = (props) => {
                                             path='create_card'
                                             onClick={handleItemClick}
                                         >
-                                            Create Card
+                                            Add Card
                                         </Menu.Item>
                                     </>
                             }
@@ -175,8 +175,8 @@ export const MenuHeader = (props) => {
                             </Menu.Item>
                             {!props.project && !props.list ?
                                 <Menu.Item
-                                    name='project'
-                                    active={state.activeItem === 'project'}
+                                    name='projects'
+                                    active={state.activeItem === 'projects'}
                                     path='create_project'
                                     onClick={handleItemClick}
                                 >
@@ -214,7 +214,7 @@ export const MenuHeader = (props) => {
                                             path='create_list'
                                             onClick={handleItemClick}
                                         >
-                                            Create List
+                                            Add List
                                         </Menu.Item>
                                     </> :
                                     <>
@@ -248,7 +248,7 @@ export const MenuHeader = (props) => {
                                             path='create_card'
                                             onClick={handleItemClick}
                                         >
-                                            Create Card
+                                            Add Card
                                         </Menu.Item>
                                     </>
                             }
@@ -270,7 +270,7 @@ export const MenuHeader = (props) => {
                             </Menu.Item>
                         </Menu>
                     </div>
-                    <br></br><br></br>
+                    <br />
                     <div className="navigation">
                         <h1 className="heading menu" style={{ fontFamily: "'Pacifico', cursive" }}>My Trello</h1>
                         <Icon name="align justify" size="big" onClick={displayMenuMobile} className="hamburgerIcon" />

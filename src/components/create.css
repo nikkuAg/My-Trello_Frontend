@@ -3,7 +3,7 @@
     padding: 1rem;
 }
 .ck-editor__editable_inline {
-    height: 300px !important;
+    height: 180px !important;
 }
 .ui.button:not(.extra){
     margin: 1rem !important;

@@ -69,7 +69,7 @@ export const CreateList = (props) => {
                 error.length > 0 ?
                     <Error message={error[0].details.name} /> :
                     <div id="form">
-                        <h1>Create a New List for </h1>
+                        <h1>Add a New List to {projects.find(o => o.id === parseInt(id)).name} </h1>
                         <Form>
                             <Form.Group widths='equal' inline>
                                 <Form.Input id="name" fluid label='Name of List' placeholder='List Name' />

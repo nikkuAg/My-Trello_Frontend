@@ -10,11 +10,11 @@ export const Footer = () => {
         textAlign: "center",
         position: "fixed",
         bottom: "0",
-        padding: "1rem",
+        padding: "0.5rem",
         height: "fitContent",
         width: "100%",
-        fontSize: '1rem',
-        marginTop: '2rem',
+        fontSize: '0.7rem',
+        marginTop: '1rem',
         zIndex: "2",
     }
     return (

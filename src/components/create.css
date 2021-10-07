@@ -5,12 +5,12 @@
 .ck-editor__editable_inline {
     height: 300px !important;
 }
-.ui.button{
+.ui.button:not(.extra){
     margin: 1rem !important;
     background-color: #EDD0FF !important;
     margin-bottom: 2rem !important;
 }
-.ui.button:hover{
+.ui.button:hover:not(.extra){
     background-color: #C465FF !important;
 }
 label{

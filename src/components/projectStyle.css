@@ -82,6 +82,11 @@ ul{
 #messageList{
     color: red;
 }
+#delete{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 
 @media (max-width: 500){

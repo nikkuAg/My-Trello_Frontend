@@ -103,7 +103,7 @@ export const UpdateProject = (props) => {
             }
         })
             .then(res => {
-                console.log(res)
+                alert("Project Updated")
                 history.push(`/my_project/${id}/`)
             })
             .catch(err => {

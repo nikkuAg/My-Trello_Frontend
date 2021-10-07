@@ -38,7 +38,7 @@ export const CreateProject = (props) => {
                         }
                     })
                         .then(res => {
-                            alert(res.statusText)
+                            alert('Project ' + res.statusText)
                             history.push("/dashboard")
                         })
                         .catch(err => {

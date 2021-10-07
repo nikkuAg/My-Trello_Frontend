@@ -14,6 +14,7 @@ import { Project } from './components/Project';
 import { UpdateProject } from './components/UpdateProject';
 import { DeleteProject } from './components/DeleteProject';
 import { CreateList } from './components/CreateList';
+import { List } from './components/List';
 
 
 
@@ -53,6 +54,7 @@ export const App = () => {
         <Route path="/dasboard" component={() => (<Dashboard navBar={true} login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/project" component={() => (<Projects id={user} token={token} users={userList} />)} />
         <Route path="/my_project/:id" component={() => (<Project login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
+        <Route path="/my_list/:id" component={() => (<List login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/update_project/:id" component={() => (<UpdateProject login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/delete_project/:id" component={() => (<DeleteProject login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />
         <Route path="/create_list/:id" component={() => (<CreateList login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />

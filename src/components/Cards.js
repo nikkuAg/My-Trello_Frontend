@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
-import parse from 'html-react-parser';
 import './projectStyle.css'
 
 
@@ -45,10 +44,9 @@ export const Cards = ({ id, token, users }) => {
                         cardList.map(element => (
                             <div key={element.id} className="project">
                                 <h2 className="heading"> {element.title}</h2>
-                                <p className="wiki">{parse(element.description)}</p>
-                                <p><span className="desc date">Due Date: </span><span className="details">{element.due_date}</span></p>
+                                <p className="extra"><span className="desc date">Due Date: </span><span className="details">{element.due_date}</span></p>
                                 <div><span className="desc">Assignee: </span>{element.assignee.map(member => (
-                                    <p className="details" key={member}>{users.find(o => o.id === member).name}</p>
+                                    <p className="extra details" key={member}>{users.find(o => o.id === member).name}</p>
                                 ))}</div>
                             </div>
                         ))

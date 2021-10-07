@@ -51,12 +51,12 @@ export const Projects = ({ id, token, users }) => {
                         projectList.map(element => (
                             <div key={element.id} className="project" value={element.id} onClick={() => projectDetail(element.id)}>
                                 <h2 className="heading"> {element.name}</h2>
-                                <p><span className="desc">Date Created: </span><span className="details">{element.date_started}</span></p>
+                                <p className="extra"><span className="desc">Date Created: </span><span className="details">{element.date_started}</span></p>
                                 <div><span className="desc">Team Members: </span>{element.team_members.map(member => (
-                                    <p className="details" key={member}>{users.find(o => o.id === member).name}</p>
+                                    <p className="extra details" key={member}>{users.find(o => o.id === member).name}</p>
                                 ))}</div>
                                 <div><span className="desc">Creator: </span>{element.creator.map(member => (
-                                    <p className="details" key={member}>{users.find(o => o.id === member).name}</p>
+                                    <p className="details extra" key={member}>{users.find(o => o.id === member).name}</p>
                                 ))}</div>
                             </div>
                         ))

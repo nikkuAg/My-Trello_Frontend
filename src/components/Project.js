@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import { Loader, Segment } from 'semantic-ui-react';
 import parse from 'html-react-parser'
 import { Error } from './Error';
@@ -10,6 +10,7 @@ import './projectStyle.css'
 
 
 export const Project = (props) => {
+    const history = useHistory()
     const { id } = useParams()
     const apiUrl = 'http://127.0.0.1:8000/trello/project/';
     const apiUrl2 = 'http://127.0.0.1:8000/trello/list/';
@@ -69,6 +70,11 @@ export const Project = (props) => {
             setselfList(data)
         }
     }, [loading2])
+
+    const listDetail = (id) => {
+        history.push(`/my_list/${id}`)
+    }
+
     return (
         <div>
             <MenuHeader id={id} active={'project'} project={true} login={props.login} disable={props.disable} admin={props.admin} />
@@ -89,13 +95,12 @@ export const Project = (props) => {
                                     <div id="lists">
                                         {selfList.length > 0 ?
                                             selfList.map(data => (
-                                                <p key={data.id}>{data.name}</p>
+                                                <p id="myLists" key={data.id} onClick={() => listDetail(data.id)}>{data.name}</p>
                                             ))
                                             : <p id="messageList">No List has been created for this project</p>}
                                     </div>
                                 </Segment>
                             </>
-
                         </div>
                     }
                 </>}

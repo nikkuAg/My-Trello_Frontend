@@ -2,10 +2,10 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router'
 import { Button } from 'semantic-ui-react'
+import { Error } from './Error'
 import { Footer } from './Footer'
 import { MenuHeader } from './Menu'
 import './projectStyle.css'
-
 
 
 export const DeleteProject = (props) => {
@@ -49,11 +49,13 @@ export const DeleteProject = (props) => {
         <div>
             <MenuHeader id={id} active={'delete'} project={true} login={props.login} disable={props.disable} admin={props.admin} />
             {loading ? <></> :
-                <div id="delete">
-                    <h1 id="title" className="extra">Delete {projects.find(o => (o.id === parseInt(id))).name}</h1>
-                    <p id="messageList">Are you sure you want to delete this Project!!</p>
-                    <Button negative className="extra" onClick={projectDelete}>Delete</Button>
-                </div>
+                error.length > 0 ?
+                    <Error message={error[0].details.detail} /> :
+                    <div id="delete">
+                        <h1 id="title" className="extra">Delete {projects.find(o => (o.id === parseInt(id))).name}</h1>
+                        <p id="messageList">Are you sure you want to delete this Project!!</p>
+                        <Button negative className="extra" onClick={projectDelete}>Delete</Button>
+                    </div>
             }
 
 

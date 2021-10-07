@@ -13,6 +13,7 @@ import { CreateProject } from './components/CreateProject';
 import { Project } from './components/Project';
 import { UpdateProject } from './components/UpdateProject';
 import { DeleteProject } from './components/DeleteProject';
+import { CreateList } from './components/CreateList';
 
 
 
@@ -54,6 +55,7 @@ export const App = () => {
         <Route path="/my_project/:id" component={() => (<Project login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/update_project/:id" component={() => (<UpdateProject login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/delete_project/:id" component={() => (<DeleteProject login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />
+        <Route path="/create_list/:id" component={() => (<CreateList login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />
         <Route path="/create_project" component={() => (<CreateProject login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Redirect to={logIn ? "/dasboard" : "/login"} />
       </Switch>

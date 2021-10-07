@@ -78,7 +78,6 @@ export const Project = (props) => {
                         <Error message={error[0].details.detail} /> :
                         <div>
                             <>
-                                {/* {console.log(self, selfList)} */}
                                 <h1 id="title" className="extra">{self.name}</h1>
 
                                 <Segment id="content">

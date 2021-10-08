@@ -88,9 +88,6 @@ export const Card = (props) => {
             setselfProject(projects.find(o => o.id === selflist.project))
         }
     }, [loading3])
-
-
-    console.log(card, self, selflist, selfProject, loading, loading2, loading3)
     return (
         <div>
             <MenuHeader id={id} active={'card'} card={true} login={props.login} disable={props.disable} admin={props.admin} />

@@ -155,8 +155,7 @@ export const UpdateProject = (props) => {
                                         <CKEditor
                                             editor={ClassicEditor}
                                             label="Wiki"
-                                            defaultValue={oldtext}
-                                            data={text}
+                                            data={oldtext}
                                             onChange={(event, editor) => {
                                                 const data = editor.getData()
                                                 settext(data)

@@ -172,14 +172,23 @@ export const MenuHeader = (props) => {
                                         </>
                             }
                             {props.admin ?
-                                <Menu.Item
-                                    name='admin'
-                                    active={state.activeItem === 'admin'}
-                                    path='admin'
-                                    onClick={handleItemClick}
-                                >
-                                    Admin Page
-                                </Menu.Item> : <></>}
+                                <>
+                                    <Menu.Item
+                                        name='admin'
+                                        active={state.activeItem === 'admin'}
+                                        onClick={handleItemClick}
+                                        path="admin">
+                                        Admin Page
+                                    </Menu.Item>
+                                    <Menu.Item
+                                        name='user'
+                                        active={state.activeItem === 'user'}
+                                        onClick={handleItemClick}
+                                        path="update_user">
+                                        Update User
+                                    </Menu.Item>
+                                </>
+                                : <></>}
                             <Menu.Item
                                 name='logout'
                                 active={state.activeItem === 'logout'}
@@ -310,13 +319,23 @@ export const MenuHeader = (props) => {
                                         </>
                             }
                             {props.admin ?
-                                <Menu.Item
-                                    name='admin'
-                                    active={state.activeItem === 'admin'}
-                                    onClick={handleItemClick}
-                                    path="admin">
-                                    Admin Page
-                                </Menu.Item> : <></>}
+                                <>
+                                    <Menu.Item
+                                        name='admin'
+                                        active={state.activeItem === 'admin'}
+                                        onClick={handleItemClick}
+                                        path="admin">
+                                        Admin Page
+                                    </Menu.Item>
+                                    <Menu.Item
+                                        name='user'
+                                        active={state.activeItem === 'user'}
+                                        onClick={handleItemClick}
+                                        path="update_user">
+                                        Update User
+                                    </Menu.Item>
+                                </>
+                                : <></>}
                             <Menu.Item
                                 name='logout'
                                 active={state.activeItem === 'logout'}

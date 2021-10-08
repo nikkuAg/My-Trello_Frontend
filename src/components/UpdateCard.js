@@ -167,7 +167,7 @@ export const UpdateCard = (props) => {
                     {error.length > 0 ?
                         <Error message={error[0].details.detail} /> :
                         <>
-                            {thisProject.creator.includes(parseInt(props.id)) || thisProject.team_members.includes(parseInt(props.id)) ?
+                            {thisProject.creator.includes(parseInt(props.id)) || thisProject.team_members.includes(parseInt(props.id)) || props.admin ?
                                 <div id="form">
                                     <h1>Update Card</h1>
                                     <Form>

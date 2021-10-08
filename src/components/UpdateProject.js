@@ -53,7 +53,6 @@ export const UpdateProject = (props) => {
     useEffect(() => {
         if (!loading) {
             var data = []
-            console.log(projects)
             var test = projects.find(o => (o.id === parseInt(id)))
             setoldProjectName(test.name)
             setoldteam(test.team_members)
@@ -118,7 +117,7 @@ export const UpdateProject = (props) => {
                     {error.length > 0 ?
                         <Error message={error[0].details.detail} /> :
                         <>
-                            {thisProject.includes(parseInt(props.id)) || thisProject.includes(parseInt(props.id)) ?
+                            {thisProject.includes(parseInt(props.id)) || thisProject.includes(parseInt(props.id)) || props.admin ?
                                 < div id="form">
                                     <h1>Update Project</h1>
                                     <Form>

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router'
 import './projectStyle.css'
 
 
-export const Projects = ({ id, token, users }) => {
+export const Projects = ({ id, token, users, admin }) => {
     const apiUrl = 'http://127.0.0.1:8000/trello/project/';
     const [projects, setprojects] = useState([])
     const [loading, setloading] = useState(true)
@@ -30,13 +30,21 @@ export const Projects = ({ id, token, users }) => {
                 }
             })
     }, [apiUrl])
-    projects.map(element => {
-        if (element.team_members.includes(myid) || element.creator.includes(myid)) {
-            projectList.push(element)
-        }
 
-        return null
-    })
+    if (admin) {
+        projects.map(project => {
+            projectList.push(project)
+
+            return null
+        })
+    } else {
+        projects.map(element => {
+            if (element.team_members.includes(myid) || element.creator.includes(myid)) {
+                projectList.push(element)
+            }
+            return null
+        })
+    }
 
     const projectDetail = (id) => {
         history.push(`/my_project/${id}`)
@@ -66,4 +74,9 @@ export const Projects = ({ id, token, users }) => {
             }
         </>
     )
+}
+
+
+Projects.defaultProps = {
+    'admin': false
 }

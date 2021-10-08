@@ -12,7 +12,9 @@ export const DeleteList = (props) => {
     const history = useHistory()
     const { id } = useParams()
     const [list, setlist] = useState([])
+    const [project, setproject] = useState([])
     const [loading, setloading] = useState(true)
+    const [loading2, setloading2] = useState(true)
     const [error, seterror] = useState([])
     const apiUrl = 'http://127.0.0.1:8000/trello/list/';
     useEffect(() => {
@@ -32,6 +34,21 @@ export const DeleteList = (props) => {
                 }
             })
     }, [])
+    const apiUrl2 = 'http://127.0.0.1:8000/trello/project/';
+    useEffect(() => {
+        if (!loading) {
+            axios.get(apiUrl2, {
+                headers: {
+                    'Authorization': props.token,
+                }
+            })
+                .then(res => {
+                    setproject(res.data)
+                    setloading2(false)
+                })
+        }
+
+    }, [loading])
     const projectDelete = () => {
         axios.delete(`${apiUrl}${id}/`, {
             headers: {
@@ -46,16 +63,18 @@ export const DeleteList = (props) => {
     return (
         <div>
             <MenuHeader id={id} active={'delete'} list={true} login={props.login} disable={props.disable} admin={props.admin} />
-            {loading ? <></> :
+            {loading || loading2 ? <></> :
                 error.length > 0 ?
                     <Error message={error[0].details.detail} /> :
-                    <div id="delete">
-                        <h1 id="title" className="extra">Delete {list.find(o => (o.id === parseInt(id))).name}</h1>
-                        <p id="messageList">Are you sure you want to delete this List!!</p>
-                        <Button negative className="extra" onClick={projectDelete}>Delete</Button>
-                    </div>
+                    <>
+                        < div id="delete">
+                            <h1 id="title" className="extra">Delete {list.find(o => (o.id === parseInt(id))).name}</h1>
+                            <p id="messageList">Are you sure you want to delete this List!!</p>
+                            <Button negative className="extra" onClick={projectDelete}>Delete</Button>
+                        </div>
+                    </>
             }
             <Footer />
-        </div>
+        </div >
     )
 }

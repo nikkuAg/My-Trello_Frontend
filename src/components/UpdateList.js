@@ -110,7 +110,7 @@ export const UpdateList = (props) => {
                     {error.length > 0 ?
                         <Error message={error[0].details.detail} /> :
                         <>
-                            {project.find(o => (o.id === parseInt(thisList.project))).creator.includes(parseInt(props.id)) || project.find(o => (o.id === parseInt(thisList.project))).team_members.includes(parseInt(props.id)) ?
+                            {project.find(o => (o.id === parseInt(thisList.project))).creator.includes(parseInt(props.id)) || project.find(o => (o.id === parseInt(thisList.project))).team_members.includes(parseInt(props.id)) || props.admin ?
                                 < div id="form">
                                     <h1>Update List</h1>
                                     <Form>

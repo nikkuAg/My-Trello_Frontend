@@ -20,6 +20,7 @@ import { DeleteList } from './components/DeleteList';
 import { CreateCard } from './components/CreateCard';
 import { Card } from './components/Card';
 import { UpdateCard } from './components/UpdateCard';
+import { DeleteCard } from './components/DeleteCard';
 
 
 
@@ -66,6 +67,7 @@ export const App = () => {
         <Route path="/update_card/:id" component={() => (<UpdateCard login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/delete_project/:id" component={() => (<DeleteProject login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />
         <Route path="/delete_list/:id" component={() => (<DeleteList login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />
+        <Route path="/delete_card/:id" component={() => (<DeleteCard login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />
         <Route path="/create_list/:id" component={() => (<CreateList login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />
         <Route path="/create_card/:id" component={() => (<CreateCard login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/create_project" component={() => (<CreateProject login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />

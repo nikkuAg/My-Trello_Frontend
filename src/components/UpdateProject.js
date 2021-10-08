@@ -132,6 +132,7 @@ export const UpdateProject = (props) => {
                                                         multiple
                                                         label='Update Team Members'
                                                         options={option}
+                                                        defaultValue={oldteam.map(team => team)}
                                                         placeholder='Team Members'
                                                         onChange={(event, { value }) => {
                                                             setteam(value)
@@ -142,6 +143,7 @@ export const UpdateProject = (props) => {
                                                         fluid
                                                         multiple
                                                         label='Update Creator'
+                                                        defaultValue={oldcreator.map(creator => creator)}
                                                         options={option}
                                                         placeholder='Creators'
                                                         onChange={(event, { value }) => {

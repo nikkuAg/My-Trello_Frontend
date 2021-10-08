@@ -24,7 +24,7 @@ export const MenuHeader = (props) => {
     }
     const handleItemClick = (e, { name, path }) => {
         setstate({ activeItem: name });
-        if ((props.project || props.list) && (path !== "dashboard" && path !== "create_project" && path !== "admin" && path !== "logout")) {
+        if ((props.project || props.list || props.card) && (path !== "dashboard" && path !== "create_project" && path !== "admin" && path !== "logout")) {
             history.push(`/${path}/${props.id}`)
         }
         else {
@@ -66,7 +66,7 @@ export const MenuHeader = (props) => {
                             >
                                 Dasboard
                             </Menu.Item>
-                            {!props.project && !props.list ?
+                            {!props.project && !props.list && !props.card ?
                                 <Menu.Item
                                     name='projects'
                                     active={state.activeItem === 'projects'}
@@ -75,7 +75,7 @@ export const MenuHeader = (props) => {
                                 >
                                     Create Project
                                 </Menu.Item>
-                                : !props.list ?
+                                : !props.list && !props.card ?
                                     <>
                                         <Menu.Item
                                             name='project'
@@ -109,41 +109,67 @@ export const MenuHeader = (props) => {
                                         >
                                             Add List
                                         </Menu.Item>
-                                    </> :
-                                    <>
-                                        <Menu.Item
-                                            name='list'
-                                            active={state.activeItem === 'list'}
-                                            path='my_list'
-                                            onClick={handleItemClick}
-                                        >
-                                            List
-                                        </Menu.Item>
-                                        <Menu.Item
-                                            name='update'
-                                            active={state.activeItem === 'update'}
-                                            path='update_list'
-                                            onClick={handleItemClick}
-                                        >
-                                            Update List
-                                        </Menu.Item>
-                                        <Menu.Item
-                                            name='delete'
-                                            active={state.activeItem === 'delete'}
-                                            path='delete_list'
-                                            onClick={handleItemClick}
-                                        >
-                                            Delete List
-                                        </Menu.Item>
-                                        <Menu.Item
-                                            name='card'
-                                            active={state.activeItem === 'card'}
-                                            path='create_card'
-                                            onClick={handleItemClick}
-                                        >
-                                            Add Card
-                                        </Menu.Item>
-                                    </>
+                                    </> : !props.card ?
+                                        <>
+                                            <Menu.Item
+                                                name='list'
+                                                active={state.activeItem === 'list'}
+                                                path='my_list'
+                                                onClick={handleItemClick}
+                                            >
+                                                List
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                name='update'
+                                                active={state.activeItem === 'update'}
+                                                path='update_list'
+                                                onClick={handleItemClick}
+                                            >
+                                                Update List
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                name='delete'
+                                                active={state.activeItem === 'delete'}
+                                                path='delete_list'
+                                                onClick={handleItemClick}
+                                            >
+                                                Delete List
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                name='card'
+                                                active={state.activeItem === 'card'}
+                                                path='create_card'
+                                                onClick={handleItemClick}
+                                            >
+                                                Add Card
+                                            </Menu.Item>
+                                        </> :
+                                        <>
+                                            <Menu.Item
+                                                name='card'
+                                                active={state.activeItem === 'card'}
+                                                path='my_card'
+                                                onClick={handleItemClick}
+                                            >
+                                                Card
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                name='update'
+                                                active={state.activeItem === 'update'}
+                                                path='update_card'
+                                                onClick={handleItemClick}
+                                            >
+                                                Update Card
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                name='delete'
+                                                active={state.activeItem === 'delete'}
+                                                path='delete_card'
+                                                onClick={handleItemClick}
+                                            >
+                                                Delete Card
+                                            </Menu.Item>
+                                        </>
                             }
                             {props.admin ?
                                 <Menu.Item
@@ -164,6 +190,11 @@ export const MenuHeader = (props) => {
                             </Menu.Item>
                         </Menu>
                     </div>
+                    <br />
+                    <div className="navigation">
+                        <h1 className="heading menu" style={{ fontFamily: "'Pacifico', cursive" }}>My Trello</h1>
+                        <Icon name="align justify" size="big" onClick={displayMenuMobile} className="hamburgerIcon" />
+                    </div>
                     <div className="hamburger">
                         <Menu vertical borderless className="navBar">
                             <Menu.Item
@@ -173,7 +204,7 @@ export const MenuHeader = (props) => {
                                 path="dashboard">
                                 Dasboard
                             </Menu.Item>
-                            {!props.project && !props.list ?
+                            {!props.project && !props.list && !props.card ?
                                 <Menu.Item
                                     name='projects'
                                     active={state.activeItem === 'projects'}
@@ -182,7 +213,7 @@ export const MenuHeader = (props) => {
                                 >
                                     Create Project
                                 </Menu.Item>
-                                : !props.list ?
+                                : !props.list && !props.card ?
                                     <>
                                         <Menu.Item
                                             name='project'
@@ -216,41 +247,67 @@ export const MenuHeader = (props) => {
                                         >
                                             Add List
                                         </Menu.Item>
-                                    </> :
-                                    <>
-                                        <Menu.Item
-                                            name='list'
-                                            active={state.activeItem === 'list'}
-                                            path='my_list'
-                                            onClick={handleItemClick}
-                                        >
-                                            List
-                                        </Menu.Item>
-                                        <Menu.Item
-                                            name='update'
-                                            active={state.activeItem === 'update'}
-                                            path='update_list'
-                                            onClick={handleItemClick}
-                                        >
-                                            Update List
-                                        </Menu.Item>
-                                        <Menu.Item
-                                            name='delete'
-                                            active={state.activeItem === 'delete'}
-                                            path='delete_list'
-                                            onClick={handleItemClick}
-                                        >
-                                            Delete List
-                                        </Menu.Item>
-                                        <Menu.Item
-                                            name='card'
-                                            active={state.activeItem === 'card'}
-                                            path='create_card'
-                                            onClick={handleItemClick}
-                                        >
-                                            Add Card
-                                        </Menu.Item>
-                                    </>
+                                    </> : !props.card ?
+                                        <>
+                                            <Menu.Item
+                                                name='list'
+                                                active={state.activeItem === 'list'}
+                                                path='my_list'
+                                                onClick={handleItemClick}
+                                            >
+                                                List
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                name='update'
+                                                active={state.activeItem === 'update'}
+                                                path='update_list'
+                                                onClick={handleItemClick}
+                                            >
+                                                Update List
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                name='delete'
+                                                active={state.activeItem === 'delete'}
+                                                path='delete_list'
+                                                onClick={handleItemClick}
+                                            >
+                                                Delete List
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                name='card'
+                                                active={state.activeItem === 'card'}
+                                                path='create_card'
+                                                onClick={handleItemClick}
+                                            >
+                                                Add Card
+                                            </Menu.Item>
+                                        </> :
+                                        <>
+                                            <Menu.Item
+                                                name='card'
+                                                active={state.activeItem === 'card'}
+                                                path='my_card'
+                                                onClick={handleItemClick}
+                                            >
+                                                Card
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                name='update'
+                                                active={state.activeItem === 'update'}
+                                                path='update_card'
+                                                onClick={handleItemClick}
+                                            >
+                                                Update Card
+                                            </Menu.Item>
+                                            <Menu.Item
+                                                name='delete'
+                                                active={state.activeItem === 'delete'}
+                                                path='delete_card'
+                                                onClick={handleItemClick}
+                                            >
+                                                Delete Card
+                                            </Menu.Item>
+                                        </>
                             }
                             {props.admin ?
                                 <Menu.Item
@@ -270,16 +327,9 @@ export const MenuHeader = (props) => {
                             </Menu.Item>
                         </Menu>
                     </div>
-                    <br />
-                    <div className="navigation">
-                        <h1 className="heading menu" style={{ fontFamily: "'Pacifico', cursive" }}>My Trello</h1>
-                        <Icon name="align justify" size="big" onClick={displayMenuMobile} className="hamburgerIcon" />
-                    </div>
                 </>
                 : <Redirect to="/login" />}
-
         </>
-
     )
 }
 
@@ -290,6 +340,7 @@ MenuHeader.defaultProps = {
     'admin': false,
     'project': false,
     'list': false,
+    'card': false,
 }
 MenuHeader.prototype = {
     'active': PropTypes.string,

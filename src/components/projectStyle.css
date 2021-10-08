@@ -1,10 +1,11 @@
 .project{
     display: inline-block;
-    border: 0.2rem solid rgb(139, 139, 139);
+    border: 0.2rem solid black;
     padding: 0.25rem 0.5rem;
     background-color: white;
     border-radius: 1rem;
     max-width: 25rem;
+    min-width: 15rem;
     transition: all 0.5s;
     margin: 0.75rem 0.5rem;
     overflow: auto;
@@ -56,7 +57,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    box-sizing: initial !important  ;
+    box-sizing: initial !important;
 }
 #title{
     text-align: center !important;
@@ -99,13 +100,25 @@ ul{
 }
 
 #comming{
-    border-color: rgb(101, 248, 101);
+    border-color: rgb(5, 209, 5);
 }
 #today{
     border-color: rgb(255, 104, 104);
 }
 #past{
     background-color: rgb(235, 94, 94);
+}
+#comming1{
+    border:0.2rem solid rgb(5, 209, 5);
+}
+#today1{
+    border:0.2rem solid rgb(255, 104, 104);
+}
+
+.dueDate{
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 2rem !important;
 }
 
 @media (max-width: 500){

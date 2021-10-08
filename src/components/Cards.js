@@ -49,7 +49,7 @@ export const Cards = ({ id, token, users }) => {
                     {cardList.length > 0 && users.length > 0 ?
 
                         cardList.map(element => (
-                            <div key={element.id} className="project" onClick={() => cardDetail(element.id)} id={(new Date(String(element.due_date))).getDate() > (new Date()).getDate() ? "comming" : (new Date(String(element.due_date))).getDate() === (new Date()).getDate() ? "today" : "past"}>
+                            <div key={element.id} className="project" onClick={() => cardDetail(element.id)} id={element.complete ? "completed" : (new Date(String(element.due_date))).getDate() > (new Date()).getDate() ? "comming" : (new Date(String(element.due_date))).getDate() === (new Date()).getDate() ? "today" : "past"}>
                                 <h2 className="heading"> {element.title}</h2>
                                 <p className="extra">{console.log(element.due_date)}<span className="desc date">Due Date: </span><span className="details">{element.due_date}</span></p>
                                 <div><span className="desc">Assignee: </span>{element.assignee.map(member => (

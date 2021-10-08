@@ -107,7 +107,7 @@ export const Card = (props) => {
                                         <h3 id="contentTitle">Description:</h3>
                                         {parse(self.description)}
                                     </Segment>
-                                    <Segment className="dueDate" id={(new Date(String(self.due_date))).getDate() > (new Date()).getDate() ? "comming1" : (new Date(String(self.due_date))).getDate() === (new Date()).getDate() ? "today1" : "past"}>
+                                    <Segment className="dueDate" id={self.complete ? "completed" : (new Date(String(self.due_date))).getDate() > (new Date()).getDate() ? "comming1" : (new Date(String(self.due_date))).getDate() === (new Date()).getDate() ? "today1" : "past"}>
                                         <h3 id="contentTitle" >Due Date:</h3>
                                         <p>{self.due_date}</p>
                                     </Segment>

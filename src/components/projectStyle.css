@@ -106,7 +106,10 @@ ul{
     border-color: rgb(255, 104, 104);
 }
 #past{
-    background-color: rgb(235, 94, 94);
+    background-color: rgb(255, 104, 104);
+}
+#completed{
+    background-color: rgb(5, 209, 5);
 }
 #comming1{
     border:0.2rem solid rgb(5, 209, 5);

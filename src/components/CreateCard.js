@@ -16,9 +16,12 @@ export const CreateCard = (props) => {
     const { id } = useParams()
     const apiUrl2 = "http://localhost:8000/trello/list/"
     const apiUrl = "http://localhost:8000/trello/card/"
+    const apiUrl3 = "http://localhost:8000/trello/project/"
     const [list, setlist] = useState([])
+    const [project, setproject] = useState([])
     const [assignee, setassignee] = useState([])
     const [loading, setloading] = useState(true)
+    const [loading2, setloading2] = useState(true)
     const [error, seterror] = useState([])
     const [text, settext] = useState('')
     const [formError, setformError] = useState('')
@@ -41,6 +44,21 @@ export const CreateCard = (props) => {
             .catch(error => {
                 if (error.response) {
                     setloading(false)
+                    seterror([{ 'details': error.response.data, 'status': error.response.status }])
+                }
+            })
+        axios.get(apiUrl3, {
+            headers: {
+                'Authorization': props.token,
+            }
+        })
+            .then(res => {
+                setproject(res.data)
+                setloading2(false)
+            })
+            .catch(error => {
+                if (error.response) {
+                    setloading2(false)
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
@@ -91,43 +109,47 @@ export const CreateCard = (props) => {
     return (
         <div>
             <MenuHeader active="card" list={true} id={id} login={props.login} disable={props.disable} admin={props.admin} />
-            {loading ? <></> :
+            {loading || loading2 ? <></> :
                 error.length > 0 ?
                     <Error message={error[0].details} /> :
-                    <div id="form">
-                        <h1>Add a Card to {list.find(o => o.id === parseInt(id)).name}  </h1>
-                        <Form>
-                            <Form.Group widths='equal' inline>
-                                <Form.Input id="name" fluid label='Title of Card' placeholder='Card Title' />
-                                <Form.Select
-                                    id="assignee"
-                                    fluid
-                                    multiple
-                                    label='Select Assignee'
-                                    options={option}
-                                    placeholder='Assignee'
-                                    onChange={(event, { value }) => {
-                                        setassignee(value)
-                                    }}
-                                />
-                                <Form.Input id="date" type="date" fluid label='Due Date' placeholder='' />
-                            </Form.Group>
-                            <label>Card Description</label>
-                            <CKEditor
-                                editor={ClassicEditor}
-                                label="Wiki"
-                                data={text}
-                                onChange={(event, editor) => {
-                                    const data = editor.getData()
-                                    settext(data)
-                                }} />
+                    <>
+                        {project.find(o => o.id === list.find(p => p.id === parseInt(id)).project).creator.includes(parseInt(props.id)) || project.find(o => o.id === list.find(p => p.id === parseInt(id)).project).team_members.includes(parseInt(props.id)) || props.admin ?
+                            <div id="form">
+                                <h1>Add a Card to {list.find(o => o.id === parseInt(id)).name}  </h1>
+                                <Form>
+                                    <Form.Group widths='equal' inline>
+                                        <Form.Input id="name" fluid label='Title of Card' placeholder='Card Title' />
+                                        <Form.Select
+                                            id="assignee"
+                                            fluid
+                                            multiple
+                                            label='Select Assignee'
+                                            options={option}
+                                            placeholder='Assignee'
+                                            onChange={(event, { value }) => {
+                                                setassignee(value)
+                                            }}
+                                        />
+                                        <Form.Input id="date" type="date" fluid label='Due Date' placeholder='' />
+                                    </Form.Group>
+                                    <label>Card Description</label>
+                                    <CKEditor
+                                        editor={ClassicEditor}
+                                        label="Wiki"
+                                        data={text}
+                                        onChange={(event, editor) => {
+                                            const data = editor.getData()
+                                            settext(data)
+                                        }} />
 
-                            <Form.Button onClick={submit}>Submit</Form.Button>
-                        </Form>
-                        <div id="error">
-                            {formError != '' ? <Error message={formError} /> : <></>}
-                        </div>
-                    </div>
+                                    <Form.Button onClick={submit}>Submit</Form.Button>
+                                </Form>
+                                <div id="error">
+                                    {formError != '' ? <Error message={formError} /> : <></>}
+                                </div>
+                            </div>
+                            : <Error message="You are not part of the project this list belongs!" />}
+                    </>
             }
             <Footer />
         </div>

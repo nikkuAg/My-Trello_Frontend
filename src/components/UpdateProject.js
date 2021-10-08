@@ -123,7 +123,7 @@ export const UpdateProject = (props) => {
                                     <Form>
                                         <Form.Group widths='equal' inline>
                                             <Form.Input id="name" defaultValue={projects.find(o => (o.id === parseInt(id))).name} fluid label='Name of Project' placeholder='Project Name' />
-                                            {projects.find(o => (o.id === parseInt(id))).creator.includes(parseInt(props.id)) ?
+                                            {projects.find(o => (o.id === parseInt(id))).creator.includes(parseInt(props.id)) || props.admin ?
                                                 <>
                                                     <Form.Select
                                                         id="team"

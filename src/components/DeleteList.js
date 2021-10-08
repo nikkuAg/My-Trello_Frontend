@@ -49,7 +49,7 @@ export const DeleteList = (props) => {
         }
 
     }, [loading])
-    const projectDelete = () => {
+    const listDelete = () => {
         axios.delete(`${apiUrl}${id}/`, {
             headers: {
                 'Authorization': props.token,
@@ -71,7 +71,7 @@ export const DeleteList = (props) => {
                             < div id="delete">
                                 <h1 id="title" className="extra">Delete {list.find(o => (o.id === parseInt(id))).name}</h1>
                                 <p id="messageList">Are you sure you want to delete this List!!</p>
-                                <Button negative className="extra" onClick={projectDelete}>Delete</Button>
+                                <Button negative className="extra" onClick={listDelete}>Delete</Button>
                             </div>
                             : <Error message={"You are not part of the Project this List belongs!"} />}
                     </>

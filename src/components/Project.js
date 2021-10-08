@@ -84,22 +84,26 @@ export const Project = (props) => {
                         <Error message={error[0].details.detail} /> :
                         <div>
                             <>
-                                <h1 id="title" className="extra">{self.name}</h1>
+                                {projects.find(o => o.id === parseInt(id)).creator.includes(parseInt(props.id)) || projects.find(o => o.id === parseInt(id)).team_members.includes(parseInt(props.id)) || props.admin ?
+                                    <>
+                                        <h1 id="title" className="extra">{self.name}</h1>
 
-                                <Segment id="content">
-                                    <h3 id="contentTitle" >Wiki:</h3>
-                                    {parse(String(self.wiki))}
-                                </Segment>
-                                <Segment id="content" >
-                                    <h3 id="contentTitle">Lists in this Project:</h3>
-                                    <div id="lists">
-                                        {selfList.length > 0 ?
-                                            selfList.map(data => (
-                                                <p id="myLists" key={data.id} onClick={() => listDetail(data.id)}>{data.name}</p>
-                                            ))
-                                            : <p id="messageList">No List has been created for this project</p>}
-                                    </div>
-                                </Segment>
+                                        <Segment id="content">
+                                            <h3 id="contentTitle" >Wiki:</h3>
+                                            {parse(String(self.wiki))}
+                                        </Segment>
+                                        <Segment id="content" >
+                                            <h3 id="contentTitle">Lists in this Project:</h3>
+                                            <div id="lists">
+                                                {selfList.length > 0 ?
+                                                    selfList.map(data => (
+                                                        <p id="myLists" key={data.id} onClick={() => listDetail(data.id)}>{data.name}</p>
+                                                    ))
+                                                    : <p id="messageList">No List has been created for this project</p>}
+                                            </div>
+                                        </Segment>
+                                    </>
+                                    : <Error message="You are not part of this project" />}
                             </>
                         </div>
                     }

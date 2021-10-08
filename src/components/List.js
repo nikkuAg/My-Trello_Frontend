@@ -102,7 +102,7 @@ export const List = (props) => {
                 <>
                     {error.length > 0 ?
                         <Error message={error[0].details.detail} /> :
-                        projects.find(o => (o.id === self.project)).creator.includes(parseInt(props.id)) || projects.find(o => (o.id === self.project)).team_members.includes(parseInt(props.id)) ?
+                        projects.find(o => (o.id === self.project)).creator.includes(parseInt(props.id)) || projects.find(o => (o.id === self.project)).team_members.includes(parseInt(props.id)) || props.admin ?
                             <div>
                                 <>
                                     <h1 id="title" className="extra">{self.name}</h1>

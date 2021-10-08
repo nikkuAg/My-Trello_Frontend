@@ -44,21 +44,22 @@ export const DeleteProject = (props) => {
             })
     }
 
-
     return (
         <div>
             <MenuHeader id={id} active={'delete'} project={true} login={props.login} disable={props.disable} admin={props.admin} />
             {loading ? <></> :
                 error.length > 0 ?
                     <Error message={error[0].details.detail} /> :
-                    <div id="delete">
-                        <h1 id="title" className="extra">Delete {projects.find(o => (o.id === parseInt(id))).name}</h1>
-                        <p id="messageList">Are you sure you want to delete this Project!!</p>
-                        <Button negative className="extra" onClick={projectDelete}>Delete</Button>
-                    </div>
+                    <>
+                        {projects.find(o => o.id === parseInt(id)).creator.includes(parseInt(props.id)) || projects.find(o => o.id === parseInt(id)).team_members.includes(parseInt(props.id)) || props.admin ?
+                            <div id="delete">
+                                <h1 id="title" className="extra">Delete {projects.find(o => (o.id === parseInt(id))).name}</h1>
+                                <p id="messageList">Are you sure you want to delete this Project!!</p>
+                                <Button negative className="extra" onClick={projectDelete}>Delete</Button>
+                            </div>
+                            : <Error message="You are not part of this project" />}
+                    </>
             }
-
-
             <Footer />
         </div>
     )

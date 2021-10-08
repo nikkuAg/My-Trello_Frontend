@@ -95,7 +95,7 @@ export const Card = (props) => {
                 <>
                     {error.length > 0 ?
                         <Error message={error[0].details.detail} /> :
-                        self.assignee.includes(parseInt(props.id)) ?
+                        self.assignee.includes(parseInt(props.id)) || props.admin ?
                             <div>
                                 <>
                                     <h1 id="title" className="extra">{self.title}</h1>

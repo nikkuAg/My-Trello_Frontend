@@ -173,7 +173,7 @@ export const UpdateCard = (props) => {
                                     <Form>
                                         <Form.Group widths='equal' inline>
                                             <Form.Input id="name" defaultValue={oldCardTitle} fluid label='Card Title' placeholder='Card' />
-                                            {thisProject.creator.includes(parseInt(props.id)) ?
+                                            {thisProject.creator.includes(parseInt(props.id)) || props.admin ?
                                                 <>
                                                     <Form.Select
                                                         id="team"

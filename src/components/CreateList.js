@@ -6,6 +6,7 @@ import { Footer } from './Footer'
 import { MenuHeader } from './Menu'
 import { Error } from './Error'
 import './create.css'
+import { Link } from 'react-router-dom'
 
 
 
@@ -68,18 +69,22 @@ export const CreateList = (props) => {
             {loading ? <></> :
                 error.length > 0 ?
                     <Error message={error[0].details.name} /> :
-                    <div id="form">
-                        <h1>Add a New List to {projects.find(o => o.id === parseInt(id)).name} </h1>
-                        <Form>
-                            <Form.Group widths='equal' inline>
-                                <Form.Input id="name" fluid label='Name of List' placeholder='List Name' />
-                            </Form.Group>
-                            <Form.Button onClick={submit}>Submit</Form.Button>
-                        </Form>
-                        <div id="error">
-                            {formError != '' ? <Error message={formError} /> : <></>}
-                        </div>
-                    </div>
+                    <>
+                        {projects.find(o => o.id === parseInt(id)).creator.includes(parseInt(props.id)) || projects.find(o => o.id === parseInt(id)).team_members.includes(parseInt(props.id)) || props.admin ?
+                            <div id="form">
+                                <h1>Add a New List to {projects.find(o => o.id === parseInt(id)).name} </h1>
+                                <Form>
+                                    <Form.Group widths='equal' inline>
+                                        <Form.Input id="name" fluid label='Name of List' placeholder='List Name' />
+                                    </Form.Group>
+                                    <Form.Button onClick={submit}>Submit</Form.Button>
+                                </Form>
+                                <div id="error">
+                                    {formError != '' ? <Error message={formError} /> : <></>}
+                                </div>
+                            </div>
+                            : <Error message="You are not part of this project" />}
+                    </>
             }
             <Footer />
         </div>

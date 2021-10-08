@@ -116,7 +116,7 @@ export const UpdateList = (props) => {
                                     <Form>
                                         <Form.Group widths='equal' inline>
                                             <Form.Input id="name" defaultValue={list.find(o => (o.id === parseInt(id))).name} fluid label='Name of List' placeholder='List Name' />
-                                            {project.find(o => (o.id === parseInt(thisList.project))).creator.includes(parseInt(props.id)) ?
+                                            {project.find(o => (o.id === parseInt(thisList.project))).creator.includes(parseInt(props.id)) || props.admin ?
                                                 <>
                                                     <Form.Select
                                                         id="team"
@@ -137,7 +137,7 @@ export const UpdateList = (props) => {
                                         <Error message={error} />
                                     </div>
                                 </div>
-                                : <Error message={"You are not part of the Project this List belongs!!!"} />
+                                : <Error message={"You are not part of the Project this List belongs!"} />
                             }
 
                         </>}

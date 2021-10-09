@@ -5,7 +5,7 @@ import './projectStyle.css'
 import { useHistory } from 'react-router'
 
 
-export const Cards = ({ id, token, users }) => {
+export const Cards = ({ id, token, users, admin }) => {
     const history = useHistory()
     const apiUrl = 'http://127.0.0.1:8000/trello/card/';
     const [cards, setcards] = useState([])
@@ -14,10 +14,12 @@ export const Cards = ({ id, token, users }) => {
     const cardList = []
     let myid = parseInt(id)
     useEffect(() => {
+        let controller = new AbortController();
         axios.get(apiUrl, {
             headers: {
                 'Authorization': token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setloading(false)
@@ -29,14 +31,23 @@ export const Cards = ({ id, token, users }) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+        return () => controller?.abort()
     }, [apiUrl])
 
-    cards.map(element => {
-        if (element.assignee.includes(myid)) {
+    if (admin) {
+        cards.map(element => {
             cardList.push(element)
-        }
-        return null
-    })
+            return null
+        })
+    } else {
+        cards.map(element => {
+            if (element.assignee.includes(myid)) {
+                cardList.push(element)
+            }
+            return null
+        })
+
+    }
 
     const cardDetail = (id) => {
         history.push(`/my_card/${id}`)
@@ -64,4 +75,9 @@ export const Cards = ({ id, token, users }) => {
             }
         </>
     )
+}
+
+
+Cards.defaultProps = {
+    'admin': false
 }

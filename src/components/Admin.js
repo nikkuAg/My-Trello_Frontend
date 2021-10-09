@@ -1,11 +1,12 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import { Icon } from 'semantic-ui-react'
+import { Divider, Icon } from 'semantic-ui-react'
 import { Footer } from './Footer'
 import { MenuHeader } from './Menu'
 import { Error } from './Error'
 import { Projects } from './Projects'
 import './projectStyle.css'
+import { Cards } from './Cards'
 
 export const Admin = (props) => {
     const history = useHistory()
@@ -43,6 +44,18 @@ export const Admin = (props) => {
                                     <Projects id={props.id} token={props.token} users={props.users} admin={true} />
                                 </div>
                                 <Icon id="right" name="arrow right" className="extra" size="big" onClick={() => slide("right", 'adminScroll')} />
+                            </div>
+                            <Divider />
+                            <div id="searchBox">
+                                <h2 className="dasboardHeadings">All Cards</h2>
+                                {/* <input type="text" id="search" onChange={search} placeholder="Search Project Name" /> */}
+                            </div>
+                            <div className="classScroll">
+                                <Icon id="left" name="arrow left" className="extra" size="big" onClick={() => slide("left", 'adminCard')} />
+                                <div id="adminCard" className="cardsProject">
+                                    <Cards id={props.id} token={props.token} users={props.users} admin={true} />
+                                </div>
+                                <Icon id="right" name="arrow right" className="extra" size="big" onClick={() => slide("right", 'adminCard')} />
                             </div>
                             <div id="myError">
                                 <Error message="No Projects with given search" />

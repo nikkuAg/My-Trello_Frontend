@@ -24,10 +24,12 @@ export const List = (props) => {
     const [self, setself] = useState({})
     const [selfcard, setselfcard] = useState([])
     useEffect(() => {
+        let controller = new AbortController();
         axios.get(apiUrl2, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            singal: controller.signal
         })
             .then(res => {
                 setlist(res.data)
@@ -39,13 +41,17 @@ export const List = (props) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+        return () => controller?.abort()
     }, [])
     useEffect(() => {
+        let controller = new AbortController();
+        let controller2 = new AbortController();
         if (!loading) {
             axios.get(apiUrl, {
                 headers: {
                     'Authorization': props.token,
-                }
+                },
+                singal: controller.signal
             })
                 .then(res => {
                     setprojects(res.data)
@@ -60,7 +66,8 @@ export const List = (props) => {
             axios.get(apiUrl3, {
                 headers: {
                     'Authorization': props.token,
-                }
+                },
+                singal: controller2.signal
             })
                 .then(res => {
                     setcard(res.data)
@@ -72,6 +79,11 @@ export const List = (props) => {
                         seterror([{ 'details': error.response.data, 'status': error.response.status }])
                     }
                 })
+        }
+
+        return () => {
+            controller?.abort()
+            controller2?.abort()
         }
     }, [loading])
     useEffect(() => {

@@ -7,6 +7,7 @@ import { Error } from './Error';
 import { MenuHeader } from './Menu';
 import { Footer } from './Footer';
 import './projectStyle.css'
+import { Client } from './Client';
 
 
 export const Card = (props) => {
@@ -25,10 +26,12 @@ export const Card = (props) => {
     const [selflist, setselflist] = useState({})
     const [selfProject, setselfProject] = useState({})
     useEffect(() => {
+        let controller = new AbortController();
         axios.get(apiUrl, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setcard(res.data)
@@ -40,15 +43,18 @@ export const Card = (props) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+        return () => controller?.abort()
     }, [])
     useEffect(() => {
+        let controller = new AbortController();
         if (!loading) {
             setself(card.find(o => (o.id === parseInt(id))))
 
             axios.get(apiUrl2, {
                 headers: {
                     'Authorization': props.token,
-                }
+                },
+                signal: controller.signal
             })
                 .then(res => {
                     setlist(res.data)
@@ -61,15 +67,18 @@ export const Card = (props) => {
                     }
                 })
         }
+        return () => controller?.abort()
     }, [loading])
     useEffect(() => {
+        let controller = new AbortController();
         if (!loading2) {
             setselflist(list.find(o => (o.id === self.list)))
 
             axios.get(apiUrl3, {
                 headers: {
                     'Authorization': props.token,
-                }
+                },
+                signal: controller.signal
             })
                 .then(res => {
                     setprojects(res.data)
@@ -82,6 +91,7 @@ export const Card = (props) => {
                     }
                 })
         }
+        return () => controller?.abort()
     }, [loading2])
     useEffect(() => {
         if (!loading3) {
@@ -115,6 +125,10 @@ export const Card = (props) => {
                                             <h3 id="contentTitle">List associtaed with:</h3>
                                             <p>{selflist.name}</p>
                                         </div>
+                                    </Segment>
+                                    <Segment id="content">
+                                        <h3 id="contentTitle">Comments:</h3>
+                                        <Client users={props.users} id={props.id} cardId={id} token={props.token} />
                                     </Segment>
                                 </>
                             </div>

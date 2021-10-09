@@ -16,10 +16,12 @@ export const DeleteProject = (props) => {
     const [error, seterror] = useState([])
     const apiUrl = 'http://127.0.0.1:8000/trello/project/';
     useEffect(() => {
+        let controller = new AbortController();
         axios.get(apiUrl, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setprojects(res.data)
@@ -31,6 +33,7 @@ export const DeleteProject = (props) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+        return () => controller?.abort()
     }, [])
     const projectDelete = () => {
         axios.delete(`${apiUrl}${id}/`, {

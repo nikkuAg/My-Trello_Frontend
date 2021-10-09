@@ -1,0 +1,50 @@
+#clientBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid;
+    height: 30rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#comments{
+    flex-direction: column;
+}
+.clientMsg{
+    max-width: 80% !important;
+    width: fit-content !important;
+    margin: 0.5rem 2rem !important;
+}
+#comments:first-child{
+    margin-top: 0.5rem;
+}
+#msgLeft{
+    align-self: flex-end;
+    background-color: #9eceff;
+}
+#msgRight{
+    align-self: flex-start;
+    background-color: #fffdb3;
+}
+#inputMsg{
+    margin-top: 1rem;
+}
+#clientCard{
+    padding: 0.5rem 0.8rem
+}
+#cardMsg{
+    margin-top: 0.25em;
+}
+#clientInput{
+    font-size: 1.5em;
+    border: 0.1em solid black;
+    margin-right: 1em;
+    width: 70%;
+    border-radius: 0.3em;
+}
+#clientBtn{
+    font-size: 1.5em;
+    border:0.1em solid black;
+    border-radius: 0.3em;
+    padding: 0.1em;
+}

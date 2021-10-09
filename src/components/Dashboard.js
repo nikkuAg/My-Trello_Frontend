@@ -13,15 +13,17 @@ export const Dashboard = (props) => {
     const apiUrl = `http://127.0.0.1:8000/trello/users/${props.id}`;
     const [user, setuser] = useState(null)
     useEffect(() => {
+        let controller = new AbortController();
         axios.get(apiUrl, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setuser(res.data.name)
             })
-
+        return () => controller?.abort()
     }, [apiUrl])
 
     window.onload = function () {

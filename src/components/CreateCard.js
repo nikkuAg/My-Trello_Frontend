@@ -32,10 +32,13 @@ export const CreateCard = (props) => {
     }
 
     useEffect(() => {
+        let controller = new AbortController();
+        let controller2 = new AbortController();
         axios.get(apiUrl2, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setlist(res.data)
@@ -50,7 +53,8 @@ export const CreateCard = (props) => {
         axios.get(apiUrl3, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller2.signal
         })
             .then(res => {
                 setproject(res.data)
@@ -62,6 +66,11 @@ export const CreateCard = (props) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+
+        return () => {
+            controller2?.abort()
+            controller?.abort()
+        }
     }, [])
     const submit = (e) => {
         var title = document.getElementById("name").value

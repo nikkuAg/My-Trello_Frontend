@@ -33,10 +33,12 @@ export const UpdateProject = (props) => {
     const apiUrl2 = `http://localhost:8000/trello/project/${id}/`
 
     useEffect(() => {
+        let controller = new AbortController();
         axios.get(apiUrl, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setprojects(res.data)
@@ -48,6 +50,7 @@ export const UpdateProject = (props) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+        return () => controller?.abort()
     }, [apiUrl])
 
     useEffect(() => {

@@ -20,10 +20,12 @@ export const CreateList = (props) => {
     const [formError, setformError] = useState('')
     const apiUrl = 'http://127.0.0.1:8000/trello/project/';
     useEffect(() => {
+        let controller = new AbortController();
         axios.get(apiUrl, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setprojects(res.data)
@@ -35,6 +37,7 @@ export const CreateList = (props) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+        return () => controller?.abort()
     }, [])
     const submit = (e) => {
         var name = document.getElementById("name").value

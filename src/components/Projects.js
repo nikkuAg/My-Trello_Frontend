@@ -14,10 +14,12 @@ export const Projects = ({ id, token, users, admin }) => {
     const history = useHistory()
     let myid = parseInt(id)
     useEffect(() => {
+        let controller = new AbortController();
         axios.get(apiUrl, {
             headers: {
                 'Authorization': token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setloading(false)
@@ -29,6 +31,7 @@ export const Projects = ({ id, token, users, admin }) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+        return () => controller?.abort()
     }, [apiUrl])
 
     if (admin) {

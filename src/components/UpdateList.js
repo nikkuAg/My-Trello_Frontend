@@ -24,10 +24,12 @@ export const UpdateList = (props) => {
     const apiUrl2 = `http://localhost:8000/trello/list/${id}/`
     const apiUrl3 = 'http://127.0.0.1:8000/trello/project/'
     useEffect(() => {
+        let controller = new AbortController();
         axios.get(apiUrl, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setlist(res.data)
@@ -39,6 +41,7 @@ export const UpdateList = (props) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+        return () => controller?.abort()
     }, [apiUrl])
 
     useEffect(() => {
@@ -50,11 +53,13 @@ export const UpdateList = (props) => {
         }
     }, [loading])
     useEffect(() => {
+        let controller = new AbortController();
         if (!loading) {
             axios.get(apiUrl3, {
                 headers: {
                     'Authorization': props.token,
-                }
+                },
+                signal: controller.signal
             })
                 .then(res => {
                     setproject(res.data)
@@ -67,6 +72,7 @@ export const UpdateList = (props) => {
                     }
                 })
         }
+        return () => controller?.abort()
     }, [thisList])
     useEffect(() => {
         if (project.length === 0) {

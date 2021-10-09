@@ -22,10 +22,12 @@ export const DeleteCard = (props) => {
     const apiUrl2 = 'http://127.0.0.1:8000/trello/list/'
     const apiUrl3 = 'http://127.0.0.1:8000/trello/project/'
     useEffect(() => {
+        let controller = new AbortController();
         axios.get(apiUrl, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setcard(res.data)
@@ -37,12 +39,16 @@ export const DeleteCard = (props) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+        return () => controller?.abort()
     }, [])
     useEffect(() => {
+        let controller = new AbortController();
+        let controller2 = new AbortController();
         axios.get(apiUrl2, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setlist(res.data)
@@ -57,7 +63,8 @@ export const DeleteCard = (props) => {
         axios.get(apiUrl3, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller2.signal
         })
             .then(res => {
                 setproject(res.data)
@@ -69,6 +76,11 @@ export const DeleteCard = (props) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+
+        return () => {
+            controller2?.abort()
+            controller?.abort()
+        }
     }, [loading])
     const cardDelete = () => {
         axios.delete(`${apiUrl}${id}/`, {

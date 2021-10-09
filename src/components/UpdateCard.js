@@ -45,10 +45,12 @@ export const UpdateCard = (props) => {
     }
 
     useEffect(() => {
+        let controller = new AbortController();
         axios.get(apiUrl, {
             headers: {
                 'Authorization': props.token,
-            }
+            },
+            signal: controller.signal
         })
             .then(res => {
                 setcard(res.data)
@@ -60,6 +62,7 @@ export const UpdateCard = (props) => {
                     seterror([{ 'details': error.response.data, 'status': error.response.status }])
                 }
             })
+        return () => controller?.abort()
     }, [apiUrl])
 
     useEffect(() => {
@@ -75,11 +78,14 @@ export const UpdateCard = (props) => {
         }
     }, [loading])
     useEffect(() => {
+        let controller = new AbortController();
+        let controller2 = new AbortController();
         if (!loading) {
             axios.get(apiUrl2, {
                 headers: {
                     'Authorization': props.token,
-                }
+                },
+                signal: controller.signal
             })
                 .then(res => {
                     setloading2(false)
@@ -94,7 +100,8 @@ export const UpdateCard = (props) => {
             axios.get(apiUrl3, {
                 headers: {
                     'Authorization': props.token,
-                }
+                },
+                signal: controller2.signal
             })
                 .then(res => {
                     setloading3(false)
@@ -106,6 +113,10 @@ export const UpdateCard = (props) => {
                         seterror([{ 'details': error.response.data, 'status': error.response.status }])
                     }
                 })
+        }
+        return () => {
+            controller2?.abort()
+            controller?.abort()
         }
     }, [loading])
     useEffect(() => {

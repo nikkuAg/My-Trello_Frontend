@@ -22,6 +22,7 @@ import { UpdateCard } from './components/UpdateCard';
 import { DeleteCard } from './components/DeleteCard';
 import { Admin } from './components/Admin';
 import { UpdateUser } from './components/UpdateUser';
+// import { Client } from './components/Client';
 
 
 
@@ -73,6 +74,7 @@ export const App = () => {
         <Route path="/create_list/:id" component={() => (<CreateList login={logIn} disable={disable} admin={admin} id={user} token={token} />)} />
         <Route path="/create_card/:id" component={() => (<CreateCard login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
         <Route path="/create_project" component={() => (<CreateProject login={logIn} disable={disable} admin={admin} id={user} token={token} users={userList} />)} />
+        {/* <Route path="/client" component={() => (<Client users={userList} id={user} />)} /> */}
         <Redirect to={logIn ? "/dasboard" : "/login"} />
       </Switch>
     </BrowserRouter>

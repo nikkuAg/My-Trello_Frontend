@@ -97,6 +97,16 @@ p:not(#messageList):not(.extra){
 ul{
     margin: 0rem;
 }
+#searchBox{
+    display: flex;
+    align-items: center;
+}
+input#search{
+    height: fit-content;
+    margin: 1rem;
+    border-color: black;
+    border-radius: 1rem;
+}
 #messageList{
     color: red;
 }
@@ -132,7 +142,10 @@ ul{
 #today1{
     border:0.2rem solid rgb(255, 104, 104);
 }
-
+#myError{
+    margin: 1rem 2rem;
+    display: none;
+}
 .dueDate{
     display: flex !important;
     flex-direction: column !important;

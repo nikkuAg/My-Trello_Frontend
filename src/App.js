@@ -27,10 +27,10 @@ import { UpdateUser } from './components/UpdateUser';
 
 
 export const App = () => {
-  let tokenSave = String(sessionStorage.getItem("token"));
-  let adminSave = String(sessionStorage.getItem("admin"));
-  let disableSave = String(sessionStorage.getItem("disable"));
-  let idSave = String(sessionStorage.getItem("id"));
+  let tokenSave = String(localStorage.getItem("token"));
+  let adminSave = String(localStorage.getItem("admin"));
+  let disableSave = String(localStorage.getItem("disable"));
+  let idSave = String(localStorage.getItem("id"));
   const [error, seterror] = useState("");
   const [token, settoken] = useState(tokenSave === "null" ? "" : tokenSave);
   const [logIn, setlogIn] = useState(token === "" ? false : true);

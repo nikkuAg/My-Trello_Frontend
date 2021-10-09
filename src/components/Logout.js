@@ -15,10 +15,10 @@ export const Logout = (props) => {
         else {
             props.error("")
         }
-        sessionStorage.removeItem("token");
-        sessionStorage.removeItem("admin");
-        sessionStorage.removeItem("disable");
-        sessionStorage.removeItem("id");
+        localStorage.removeItem("token");
+        localStorage.removeItem("admin");
+        localStorage.removeItem("disable");
+        localStorage.removeItem("id");
         props.setlogin(false);
     }
     return <Redirect to="" />

@@ -13,10 +13,10 @@ export const Token = (props) => {
     props.settoken(auth);
     disable = (disable === "True" ? true : false);
     admin = (admin === "True" ? true : false);
-    sessionStorage.setItem('token', auth);
-    sessionStorage.setItem('admin', admin);
-    sessionStorage.setItem('disable', disable);
-    sessionStorage.setItem('id', id);
+    localStorage.setItem('token', auth);
+    localStorage.setItem('admin', admin);
+    localStorage.setItem('disable', disable);
+    localStorage.setItem('id', id);
     props.setlogin(true);
     props.setadmin(admin);
     props.setdisable(disable);

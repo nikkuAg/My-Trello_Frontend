@@ -5,11 +5,9 @@
     background-color: white;
     border-radius: 1rem;
     max-width: 25rem;
-    min-width: 15rem;
+    min-width: 16rem;
     transition: all 0.5s;
-    margin: 0.75rem 0.5rem;
-    overflow: auto;
-    height: auto;
+    margin: 0.75rem 1rem;
 }
 .project:hover{
     cursor: pointer;
@@ -36,7 +34,11 @@
     margin: 0.5rem 0rem !important;
     font-size: 1.1rem;
 }
-
+.contentProject{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem
+}
 
 .dashboardBox{
     display: flex;
@@ -55,9 +57,21 @@
 }
 .cardsProject{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
     box-sizing: initial !important;
+    overflow-x: auto;
+    width: 90vw;
+}
+.cardsProject::-webkit-scrollbar{
+    display: none;
+}
+.classScroll{
+    display: flex;
+    align-items: center;
+}
+i.arrow.extra{
+    margin: -0.5em;
+    cursor: pointer;
+    z-index: 1;
 }
 #title{
     text-align: center !important;
@@ -73,6 +87,7 @@
 }
 #lists{
     display: flex;
+    flex-wrap: wrap;
 
 }
 p:not(#messageList):not(.extra){
@@ -123,11 +138,17 @@ ul{
     flex-direction: column !important;
     margin: 2rem !important;
 }
+@media (max-width: 600px){
 
-@media (max-width: 500){
-    .project{
-        margin: 1rem 0rem;
+    i.big.icon{
+        font-size: 1.5em;
     }
+}
+
+@media (max-width: 500px){
+    /* .project{
+        margin: 1rem 0rem;
+    } */
     #title{
         margin: 0px;
     }

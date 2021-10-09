@@ -113,10 +113,10 @@ export const List = (props) => {
                                     </Segment>
                                     <Segment id="content" >
                                         <h3 id="contentTitle">Cards in this List:</h3>
-                                        <div id="lists">
+                                        <div className="cardsProject">
                                             {selfcard.length > 0 ?
                                                 selfcard.map(data => (
-                                                    <div key={data.id} className="project" onClick={() => cardDetail(data.id)} id={data.complete ? "completed" : (new Date(String(data.due_date))).getDate() > (new Date()).getDate() ? "comming" : (new Date(String(data.due_date))).getDate() === (new Date()).getDate() ? "today" : "past"}>
+                                                    <div key={data.id} className="project" onClick={() => cardDetail(data.id)} id={data.complete ? "completed" : (new Date(String(data.due_date))) > (new Date()) ? "comming" : (((new Date(String(data.due_date))).getDate() === (new Date()).getDate()) && ((new Date(String(data.due_date))).getMonth() === (new Date()).getMonth()) && ((new Date(String(data.due_date))).getFullYear() === (new Date()).getFullYear())) ? "today" : "past"}>
                                                         < h2 className="heading" > {data.title}</h2>
                                                         <p className="extra"><span className="desc date">Due Date: </span><span className="details">{data.due_date}</span></p>
                                                         <div><span className="desc">Assignee: </span>{data.assignee.map(member => (

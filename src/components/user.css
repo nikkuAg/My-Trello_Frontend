@@ -10,7 +10,7 @@
     align-items: center;
     flex-direction: column;
 }
-#form{
+#formU{
     display: flex;
     align-items: flex-end;
     justify-content: space-evenly;
@@ -18,7 +18,7 @@
     width: fit-content;
     padding: 0px;
 }
-#form1{
+#form1U{
     display: flex;
     flex-direction: column;
     margin: 1rem;

@@ -55,10 +55,9 @@ export const Projects = ({ id, token, users, admin }) => {
             {loading ? <Loader type="ThreeDots" color="black" height={80} width={80} /> :
                 <>
                     {projectList.length > 0 && users.length > 0 ?
-
                         projectList.map(element => (
-                            <div key={element.id} className="project" value={element.id} onClick={() => projectDetail(element.id)}>
-                                <h2 className="heading"> {element.name}</h2>
+                            <div id="projectSearch" key={element.id} className="project" value={element.id} onClick={() => projectDetail(element.id)}>
+                                <h2 id="projectName" className="heading"> {element.name}</h2>
                                 <p className="extra"><span className="desc">Date Created: </span><span className="details">{element.date_started}</span></p>
                                 <div><span className="desc">Team Members: </span>{element.team_members.map(member => (
                                     <p className="extra details" key={member}>{users.find(o => o.id === member).name}</p>
@@ -69,6 +68,7 @@ export const Projects = ({ id, token, users, admin }) => {
                             </div>
                         ))
                         : <p>{error.length > 0 ? error[0].details.detail : ''}</p>
+
                     }
                 </>
             }

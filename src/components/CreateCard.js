@@ -77,7 +77,6 @@ export const CreateCard = (props) => {
                             "list": parseInt(id),
                             "due_date": date,
                         }
-                        console.log(data)
                         axios.post(apiUrl, data, {
                             headers: {
                                 'Authorization': props.token,

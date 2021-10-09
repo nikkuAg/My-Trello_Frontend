@@ -153,7 +153,7 @@ export const UpdateUser = (props) => {
                                             <Button className="extra" primary onClick={() => adminClick("disable")}>Disable User</Button>
                                         </div>
                                         {disable ?
-                                            <Form id="form">
+                                            <Form id="formU">
                                                 <Form.Select
                                                     fluid
                                                     multiple
@@ -173,7 +173,7 @@ export const UpdateUser = (props) => {
                                             <Button className="extra" primary onClick={() => adminClick("enable")}>Enable User</Button>
                                         </div>
                                         {enable ?
-                                            <Form id="form">
+                                            <Form id="formU">
                                                 <Form.Select
                                                     fluid
                                                     multiple
@@ -193,7 +193,7 @@ export const UpdateUser = (props) => {
                                             <Button className="extra" primary onClick={() => adminClick("role")}>Change Role of User</Button>
                                         </div>
                                         {role ?
-                                            <Form id="form1">
+                                            <Form id="form1U">
                                                 <Form.Select
                                                     fluid
                                                     label='Select User '
@@ -223,7 +223,7 @@ export const UpdateUser = (props) => {
                                         <Button className="extra" primary onClick={() => adminClick("disable")}>Disable User</Button>
                                     </div>
                                     {disable ?
-                                        <Form id="form">
+                                        <Form id="formU">
                                             <Form.Select
                                                 fluid
                                                 multiple
@@ -243,7 +243,7 @@ export const UpdateUser = (props) => {
                                         <Button className="extra" primary onClick={() => adminClick("enable")}>Enable User</Button>
                                     </div>
                                     {enable ?
-                                        <Form id="form">
+                                        <Form id="formU">
                                             <Form.Select
                                                 fluid
                                                 multiple
@@ -263,7 +263,7 @@ export const UpdateUser = (props) => {
                                         <Button className="extra" primary onClick={() => adminClick("role")}>Change Role of User</Button>
                                     </div>
                                     {role ?
-                                        <Form id="form1">
+                                        <Form id="form1U">
                                             <Form.Select
                                                 fluid
                                                 label='Select User '

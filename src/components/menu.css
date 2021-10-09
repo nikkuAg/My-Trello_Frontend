@@ -24,9 +24,9 @@ i.icon:not(.extra){
 .ui.vertical.menu{
     display: block !important;
 }
-.menu{
+/* .menu{
     font-size: 1rem !important;
-}
+} */
 .ui.vertical.menu .item{
     background-color: #EDD0FF !important;
 }
@@ -44,6 +44,25 @@ h1:first-child:not(.extra){
     margin: 1rem !important;
 }
 
+@media (max-width: 1100px){
+    .ui.menu.navBar:not(.vertical){
+        font-size: 0.9rem;
+    }
+    .ui.vertical.menu{
+        display: none;
+    }
+
+}
+
+@media (max-width: 815px){
+    .ui.menu.navBar:not(.vertical){
+        font-size: 0.7rem;
+    }
+    .ui.vertical.menu{
+        display: none;
+    }
+
+}
 @media (max-width: 610px) {
     .heading{
         margin: 1rem !important;
@@ -67,25 +86,6 @@ h1:first-child:not(.extra){
     }
 
 }
-@media (max-width: 1100px){
-    .ui.menu.navBar:not(.vertical){
-        font-size: 0.9rem;
-    }
-    .ui.vertical.menu{
-        display: none;
-    }
-
-}
-@media (max-width: 750px){
-    .ui.menu.navBar:not(.vertical){
-        font-size: 0.7rem;
-    }
-    .ui.vertical.menu{
-        display: none;
-    }
-
-}
-
 @media (max-width: 330px) {
     h1:first-child{
         font-size: 2.5rem !important;

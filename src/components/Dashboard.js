@@ -4,7 +4,7 @@ import { Projects } from './Projects';
 import { Cards } from './Cards';
 import { MenuHeader } from './Menu';
 import { Footer } from './Footer';
-import { Divider } from 'semantic-ui-react';
+import { Divider, Icon } from 'semantic-ui-react';
 import './projectStyle.css'
 
 
@@ -29,6 +29,23 @@ export const Dashboard = (props) => {
             window.location.reload();
         }
     }
+
+    const slide = (direction, id) => {
+        var container = document.getElementById(id);
+        var scrollCompleted = 0;
+        var slideVar = setInterval(function () {
+            if (direction == 'left') {
+                container.scrollLeft -= 25;
+            } else {
+                container.scrollLeft += 25;
+            }
+            scrollCompleted += 20;
+            if (scrollCompleted >= 100) {
+                window.clearInterval(slideVar);
+            }
+        }, 50);
+    }
+
     return (
         <div>
             <MenuHeader login={props.login} disable={props.disable} admin={props.admin} />
@@ -36,19 +53,29 @@ export const Dashboard = (props) => {
                 <h1 className="dasboardHeadings">Your Dashboard</h1>
                 <div className="contentProject">
                     <h2 className="dasboardHeadings">Your Projects</h2>
-                    <div className="cardsProject">
-                        <Projects token={props.token} id={props.id} users={props.users} />
+                    <div className="classScroll">
+                        <Icon id="left" name="arrow left" className="extra" size="big" onClick={() => slide("left", 'projectScroll')} />
+                        <div id="projectScroll" className="cardsProject">
+                            <Projects token={props.token} id={props.id} users={props.users} />
+                        </div>
+                        <Icon id="right" name="arrow right" className="extra" size="big" onClick={() => slide("right", 'projectScroll')} />
                     </div>
                     <Divider />
                     <h2 className="dasboardHeadings">Your Cards</h2>
-                    <div className="cardsProject">
-                        <Cards token={props.token} id={props.id} users={props.users} />
+                    <div className="classScroll">
+                        <Icon id="left" name="arrow left" className="extra" size="big" onClick={() => slide("left", 'cardScroll')} />
+                        <div id="cardScroll" className="cardsProject">
+                            <Cards token={props.token} id={props.id} users={props.users} />
+                        </div>
+                        <Icon id="right" name="arrow right" className="extra" size="big" onClick={() => slide("right", 'cardScroll')} />
                     </div>
                 </div>
             </div>
             <Footer />
-        </div>
+        </div >
     )
 
 
 }
+
+

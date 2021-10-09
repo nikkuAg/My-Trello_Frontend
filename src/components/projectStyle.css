@@ -101,7 +101,7 @@ ul{
     display: flex;
     align-items: center;
 }
-input#search{
+input.input{
     height: fit-content;
     margin: 1rem;
     border-color: black;
@@ -143,6 +143,10 @@ input#search{
     border:0.2rem solid rgb(255, 104, 104);
 }
 #myError{
+    margin: 1rem 2rem;
+    display: none;
+}
+#myError2{
     margin: 1rem 2rem;
     display: none;
 }

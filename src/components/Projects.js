@@ -63,10 +63,10 @@ export const Projects = ({ id, token, users, admin }) => {
                                 <h2 id="projectName" className="heading"> {element.name}</h2>
                                 <p className="extra"><span className="desc">Date Created: </span><span className="details">{element.date_started}</span></p>
                                 <div><span className="desc">Team Members: </span>{element.team_members.map(member => (
-                                    <p className="extra details" key={member}>{users.find(o => o.id === member).name}</p>
+                                    <p className="extra details searchP" key={member}>{users.find(o => o.id === member).name}</p>
                                 ))}</div>
                                 <div><span className="desc">Creator: </span>{element.creator.map(member => (
-                                    <p className="details extra" key={member}>{users.find(o => o.id === member).name}</p>
+                                    <p className="details extra searchP" key={member}>{users.find(o => o.id === member).name}</p>
                                 ))}</div>
                             </div>
                         ))

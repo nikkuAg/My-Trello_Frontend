@@ -64,7 +64,7 @@ export const Cards = ({ id, token, users, admin }) => {
                                 <h2 className="heading"> {element.title}</h2>
                                 <p className="extra"><span className="desc date">Due Date: </span><span className="details">{element.due_date}</span></p>
                                 <div><span className="desc">Assignee: </span>{element.assignee.map(member => (
-                                    <p className="extra details" key={member}>{users.find(o => o.id === member).name}</p>
+                                    <p className="extra details searchP" key={member}>{users.find(o => o.id === member).name}</p>
                                 ))}</div>
                             </div>
                         ))

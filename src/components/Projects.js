@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
+import parse from 'html-react-parser'
 import { useHistory } from 'react-router'
 import './projectStyle.css'
 
 
-export const Projects = ({ id, token, users, admin }) => {
+export const Projects = ({ id, token, users, admin, wiki }) => {
     const apiUrl = 'http://127.0.0.1:8000/trello/project/';
     const [projects, setprojects] = useState([])
     const [loading, setloading] = useState(true)
@@ -62,7 +63,8 @@ export const Projects = ({ id, token, users, admin }) => {
                             <div id="projectSearch" key={element.id} className="project" value={element.id} onClick={() => projectDetail(element.id)}>
                                 <h2 id="projectName" className="heading"> {element.name}</h2>
                                 <p className="extra"><span className="desc">Date Created: </span><span className="details">{element.date_started}</span></p>
-                                <div><span className="desc">Team Members: </span>{element.team_members.map(member => (
+                                {wiki ? <><span className="desc">Wiki: </span> {parse(String(element.wiki))}</> : <></>}
+                                <div id="team"><span className="desc">Team Members: </span>{element.team_members.map(member => (
                                     <p className="extra details searchP" key={member}>{users.find(o => o.id === member).name}</p>
                                 ))}</div>
                                 <div><span className="desc">Creator: </span>{element.creator.map(member => (
@@ -81,5 +83,6 @@ export const Projects = ({ id, token, users, admin }) => {
 
 
 Projects.defaultProps = {
-    'admin': false
+    'admin': false,
+    'wiki': false
 }

@@ -29,6 +29,9 @@
     font-size: 1rem;
     margin: 1rem 0rem !important;
 }
+#team{
+    margin-top: 1rem;
+}
 .details{
     padding-left: 0.5rem;
     margin: 0.5rem 0rem !important;
@@ -92,7 +95,9 @@ i.arrow.extra{
 }
 p:not(#messageList):not(.extra){
     margin-left: 2rem;
+    margin-right: 2rem;
     height: fit-content;
+    word-wrap: normal;
 }
 ul{
     margin: 0rem;
@@ -155,17 +160,18 @@ input.input{
     flex-direction: column !important;
     margin: 2rem !important;
 }
-@media (max-width: 600px){
+@media (max-width: 620px){
 
     i.big.icon{
         font-size: 1.5em;
     }
+    #searchBox{
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 @media (max-width: 500px){
-    /* .project{
-        margin: 1rem 0rem;
-    } */
     #title{
         margin: 0px;
     }

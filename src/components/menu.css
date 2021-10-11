@@ -1,4 +1,4 @@
-i.icon:not(.extra):not(.delete){
+#myIcon{
     display: none !important;
 }
 .ui.menu.navBar{
@@ -24,13 +24,10 @@ i.icon:not(.extra):not(.delete){
 .ui.vertical.menu{
     display: block !important;
 }
-/* .menu{
-    font-size: 1rem !important;
-} */
 .ui.vertical.menu .item{
     background-color: #EDD0FF !important;
 }
-i.icon:hover:not(.extra){
+#myIcon{
     cursor: pointer;
 }
 h1:first-child:not(.extra){
@@ -77,7 +74,7 @@ h1:first-child:not(.extra){
     .ui.vertical.menu{
         font-size: 1.5rem !important;
     }
-    i.icon.hamburgerIcon{
+    #myIcon{
         display: block !important;
         margin: 1rem !important;
     }

@@ -99,7 +99,6 @@ export const UpdateUser = (props) => {
                         })
                 }
                 alert("User(s) enabled")
-                window.location.reload()
             }
             else {
                 seterror("Select atleast one user to enable")
@@ -122,7 +121,6 @@ export const UpdateUser = (props) => {
                     })
                         .then(res => {
                             alert("User role changed")
-                            window.location.reload()
                         })
                         .catch(err => {
                             seterror(err)

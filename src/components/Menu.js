@@ -190,6 +190,14 @@ export const MenuHeader = (props) => {
                                 </>
                                 : <></>}
                             <Menu.Item
+                                name='all'
+                                active={state.activeItem === 'all'}
+                                onClick={handleItemClick}
+                                path="all_project"
+                            >
+                                All Projects
+                            </Menu.Item>
+                            <Menu.Item
                                 name='logout'
                                 active={state.activeItem === 'logout'}
                                 onClick={handleItemClick}
@@ -202,7 +210,7 @@ export const MenuHeader = (props) => {
                     <br />
                     <div className="navigation">
                         <h1 className="heading menu" style={{ fontFamily: "'Pacifico', cursive" }}>My Trello</h1>
-                        <Icon name="align justify" size="big" onClick={displayMenuMobile} className="hamburgerIcon" />
+                        <Icon id="myIcon" name="align justify" size="big" onClick={displayMenuMobile} className="hamburgerIcon" />
                     </div>
                     <div className="hamburger">
                         <Menu vertical borderless className="navBar">
@@ -336,6 +344,14 @@ export const MenuHeader = (props) => {
                                     </Menu.Item>
                                 </>
                                 : <></>}
+                            <Menu.Item
+                                name='all'
+                                active={state.activeItem === 'all'}
+                                onClick={handleItemClick}
+                                path="all_project"
+                            >
+                                All Projects
+                            </Menu.Item>
                             <Menu.Item
                                 name='logout'
                                 active={state.activeItem === 'logout'}

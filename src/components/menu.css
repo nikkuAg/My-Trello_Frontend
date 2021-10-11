@@ -1,4 +1,4 @@
-i.icon:not(.extra){
+i.icon:not(.extra):not(.delete){
     display: none !important;
 }
 .ui.menu.navBar{
